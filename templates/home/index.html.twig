@@ -1,0 +1,245 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<style>
+    /* Reset et configuration plein écran */
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .main-wrapper {
+        display: flex;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    /* Barre latérale gauche épurée aux couleurs de l'INS Niger */
+    .sidebar {
+        width: 280px;
+        min-width: 280px;
+        height: 100vh;
+        background-color: #ffffff;
+        border-right: 4px solid #008751; /* Vert officiel INS */
+        display: flex;
+        flex-direction: column;
+        box-shadow: 4px 0 15px rgba(0,0,0,0.05);
+        z-index: 1000;
+    }
+
+    .sidebar-header {
+        background: linear-gradient(135deg, #008751 0%, #00663b 100%);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 5px solid #F2A900; /* Orange officiel INS */
+    }
+
+    .sidebar-body {
+        padding: 20px;
+        flex-grow: 1;
+        overflow-y: auto;
+    }
+
+    /* Conteneur de la carte prenant tout l'espace restant */
+    .map-container {
+        flex: 1;
+        height: 100vh;
+        position: relative;
+    }
+
+    #map {
+        width: 100%;
+        height: 100%;
+        background-color: #f8f9fa;
+    }
+</style>
+
+<div class="main-wrapper">
+    <!-- 1. BARRE LATÉRALE ÉPURÉE -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h4 class="m-0 fw-bold">RGPH NIGER</h4>
+            <small class="text-white-50">Géoportail Officiel</small>
+        </div>
+        <div class="sidebar-body text-center">
+            <div class="p-3 rounded text-white shadow-sm mb-3" style="background-color: #008751;">
+                <h6 class="fw-bold m-0">République du Niger</h6>
+                <small>8 Régions • 63 Départements</small>
+            </div>
+            <p class="text-muted small fst-italic">Zoomez sur la carte pour basculer de la vue régionale à la vue départementale.</p>
+        </div>
+    </div>
+
+    <!-- 2. CARTE INTERACTIVE PLEIN ÉCRAN -->
+    <div class="map-container">
+        <div id="map"></div>
+    </div>
+</div>
+
+<!-- Leaflet CSS & JS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Initialisation de la carte centrée sur le Niger
+        var map = L.map('map', {
+            zoomControl: true,
+            worldCopyJump: false
+        }).setView([17.6078, 8.0817], 6);
+
+        // Fond de carte épuré
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors - RGPH Niger',
+            maxZoom: 18,
+            minZoom: 5
+        }).addTo(map);
+
+        // --- MASQUE INVERSÉ : Cache tous les pays extérieurs au Niger ---
+        // Coordonnées simplifiées du contour extérieur du Niger (le "trou" du masque)
+        var nigerOuterRing = [
+            [23.5, 12.0], [21.5, 15.0], [18.0, 15.8], [15.2, 13.0], 
+            [13.5, 14.5], [12.4, 14.1], [11.7, 10.0], [12.3, 7.5], 
+            [11.9, 3.5], [13.2, 2.5], [14.5, 0.2], [17.5, 3.5], 
+            [19.0, 5.0], [21.0, 8.0], [23.5, 12.0]
+        ];
+
+        // Polygone mondial externe + trou du Niger
+        var worldMaskCoords = [
+            [
+                [-90, -180], [-90, 180], [90, 180], [90, -180], [-90, -180] // Anneau extérieur (monde)
+            ],
+            nigerOuterRing // Anneau intérieur (le Niger laissé visible)
+        ];
+
+        // Application du masque (couleur blanche opaque/semi-opaque par-dessus les autres pays)
+        L.polygon(worldMaskCoords, {
+            color: '#008751',
+            weight: 3,
+            fillColor: '#ffffff',
+            fillOpacity: 0.85
+        }).addTo(map);
+        // -------------------------------------------------------------
+
+        // Données des 8 Régions du Niger
+        var regionsData = [
+            {name: "Agadez", coords: [16.9667, 7.9833], depts: 6},
+            {name: "Diffa", coords: [13.3153, 12.6111], depts: 6},
+            {name: "Dosso", coords: [13.0490, 3.1937], depts: 8},
+            {name: "Maradi", coords: [13.5000, 7.1017], depts: 8},
+            {name: "Tahoua", coords: [14.8988, 5.2692], depts: 12},
+            {name: "Tillabéri", coords: [14.2071, 1.4542], depts: 13},
+            {name: "Zinder", coords: [13.8072, 8.9881], depts: 10},
+            {name: "Niamey", coords: [13.5116, 2.1254], depts: 1}
+        ];
+
+        // Données des 63 Départements officiels du Niger
+        var deptsData = [
+            // Agadez
+            {name: "Aderbissinat", coords: [16.5, 7.5], region: "Agadez"},
+            {name: "Arlit", coords: [18.73, 7.38], region: "Agadez"},
+            {name: "Bilma", coords: [18.68, 12.91], region: "Agadez"},
+            {name: "Iférouane", coords: [19.07, 8.41], region: "Agadez"},
+            {name: "Ingall", coords: [16.78, 6.94], region: "Agadez"},
+            {name: "Tchirozérine", coords: [17.43, 6.65], region: "Agadez"},
+            // Diffa
+            {name: "Bosso", coords: [13.70, 13.31], region: "Diffa"},
+            {name: "Diffa", coords: [13.31, 12.61], region: "Diffa"},
+            {name: "Goudoumaria", coords: [13.88, 10.98], region: "Diffa"},
+            {name: "Maïné-Soroa", coords: [13.22, 12.02], region: "Diffa"},
+            {name: "N'Gourti", coords: [15.26, 12.96], region: "Diffa"},
+            {name: "N'Guigmi", coords: [14.25, 13.11], region: "Diffa"},
+            // Dosso
+            {name: "Boboye", coords: [13.28, 2.92], region: "Dosso"},
+            {name: "Dioundiou", coords: [12.65, 3.33], region: "Dosso"},
+            {name: "Dogondoutchi", coords: [13.64, 4.02], region: "Dosso"},
+            {name: "Dosso", coords: [13.04, 3.19], region: "Dosso"},
+            {name: "Falmèy", coords: [12.83, 2.80], region: "Dosso"},
+            {name: "Gaya", coords: [11.88, 3.39], region: "Dosso"},
+            {name: "Loga", coords: [13.61, 3.25], region: "Dosso"},
+            {name: "Tibiri", coords: [13.56, 3.73], region: "Dosso"},
+            // Maradi
+            {name: "Aguié", coords: [13.51, 7.78], region: "Maradi"},
+            {name: "Bermo", coords: [15.00, 7.53], region: "Maradi"},
+            {name: "Dakoro", coords: [14.51, 6.76], region: "Maradi"},
+            {name: "Gazaoua", coords: [13.93, 7.98], region: "Maradi"},
+            {name: "Guidan-Roumdji", coords: [13.93, 6.99], region: "Maradi"},
+            {name: "Madarounfa", coords: [13.31, 7.15], region: "Maradi"},
+            {name: "Mayahi", coords: [13.95, 7.67], region: "Maradi"},
+            {name: "Tessaoua", coords: [13.75, 7.98], region: "Maradi"},
+            // Tahoua
+            {name: "Abalak", coords: [15.45, 6.27], region: "Tahoua"},
+            {name: "Bagaroua", coords: [14.54, 4.75], region: "Tahoua"},
+            {name: "Birni N'Konni", coords: [13.80, 5.25], region: "Tahoua"},
+            {name: "Bouza", coords: [14.42, 6.04], region: "Tahoua"},
+            {name: "Illéla", coords: [14.46, 5.24], region: "Tahoua"},
+            {name: "Kéita", coords: [14.76, 5.77], region: "Tahoua"},
+            {name: "Madaoua", coords: [14.07, 5.96], region: "Tahoua"},
+            {name: "Malbaza", coords: [13.93, 5.75], region: "Tahoua"},
+            {name: "Tahoua", coords: [14.89, 5.26], region: "Tahoua"},
+            {name: "Tassara", coords: [16.85, 5.63], region: "Tahoua"},
+            {name: "Tchintabaraden", coords: [15.89, 5.80], region: "Tahoua"},
+            {name: "Tillia", coords: [16.03, 4.50], region: "Tahoua"},
+            // Tillabéri
+            {name: "Abala", coords: [14.95, 3.44], region: "Tillabéri"},
+            {name: "Ayérou", coords: [15.55, 1.47], region: "Tillabéri"},
+            {name: "Balleyara", coords: [13.75, 2.95], region: "Tillabéri"},
+            {name: "Banibangou", coords: [15.04, 2.65], region: "Tillabéri"},
+            {name: "Bankilaré", coords: [14.23, 0.72], region: "Tillabéri"},
+            {name: "Filingué", coords: [14.35, 3.31], region: "Tillabéri"},
+            {name: "Gothèye", coords: [13.96, 1.57], region: "Tillabéri"},
+            {name: "Kollo", coords: [13.31, 2.33], region: "Tillabéri"},
+            {name: "Ouallam", coords: [14.31, 2.08], region: "Tillabéri"},
+            {name: "Say", coords: [13.10, 2.36], region: "Tillabéri"},
+            {name: "Téra", coords: [14.00, 0.75], region: "Tillabéri"},
+            {name: "Tillabéri", coords: [14.20, 1.45], region: "Tillabéri"},
+            {name: "Torodi", coords: [13.14, 0.78], region: "Tillabéri"},
+            // Zinder
+            {name: "Belbédji", coords: [14.54, 9.35], region: "Zinder"},
+            {name: "Damagaram Takaya", coords: [13.94, 9.35], region: "Zinder"},
+            {name: "Dungass", coords: [13.10, 9.05], region: "Zinder"},
+            {name: "Gouré", coords: [13.98, 10.27], region: "Zinder"},
+            {name: "Magaria", coords: [12.99, 8.91], region: "Zinder"},
+            {name: "Matamèye", coords: [13.46, 8.47], region: "Zinder"},
+            {name: "Mirriah", coords: [13.71, 9.15], region: "Zinder"},
+            {name: "Tanout", coords: [14.97, 8.88], region: "Zinder"},
+            {name: "Takeita", coords: [13.82, 8.65], region: "Zinder"},
+            {name: "Tesker", coords: [15.86, 11.01], region: "Zinder"},
+            // Niamey
+            {name: "Niamey (Communauté Urbaine)", coords: [13.51, 2.12], region: "Niamey"}
+        ];
+
+        var markersGroup = L.layerGroup().addTo(map);
+
+        // Gestion de l'affichage dynamique des marqueurs (Régions / Départements) selon le zoom
+        function updateMapMarkers() {
+            markersGroup.clearLayers();
+            var currentZoom = map.getZoom();
+
+            if (currentZoom < 7) {
+                regionsData.forEach(function(reg) {
+                    var marker = L.marker(reg.coords).bindPopup("<b>Région : " + reg.name + "</b><br>" + reg.depts + " Départements");
+                    markersGroup.addLayer(marker);
+                });
+            } else {
+                deptsData.forEach(function(dept) {
+                    var marker = L.marker(dept.coords).bindPopup("<b>Département : " + dept.name + "</b><br>Région : " + dept.region);
+                    markersGroup.addLayer(marker);
+                });
+            }
+        }
+
+        map.on('zoomend', updateMapMarkers);
+        updateMapMarkers();
+
+        // Forcer le recalcul de la taille de la carte
+        setTimeout(function() {
+            map.invalidateSize();
+        }, 200);
+    });
+</script>
+{% endblock %}
