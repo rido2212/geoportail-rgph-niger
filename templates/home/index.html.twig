@@ -1,245 +1,540 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Géoportail - RGPH Niger{% endblock %}
+
 {% block body %}
+<div id="rgph-splash" class="rgph-splash" role="status" aria-label="Chargement du portail RGPH"><div class="splash-flag"><span></span><i></i><span></span></div><strong>5e RGPH NIGER</strong><small>Chargement du portail RGPH...</small><div class="splash-progress"><span></span></div></div><div class="rgph-page">
+<header class="topbar"><a class="brand-banner" href="{{ path('home') }}" aria-label="Accueil du portail du RGPH Niger"><img class="banner-niger" src="/image/logo-niger.png" alt="Armoiries de la R&eacute;publique du Niger"><div class="banner-title"><strong>RGPH-5</strong><span>RECENSEMENT G&Eacute;N&Eacute;RAL DE LA POPULATION ET DE L’HABITAT</span></div><img class="banner-rgph" src="/image/logo-rgph.png" alt="Logo du cinqui&egrave;me RGPH"><img class="banner-ins" src="/image/logo-ins-mark.png" alt="Institut National de la Statistique du Niger"></a><nav class="top-nav" aria-label="Navigation RGPH"><button class="nav-tab active" data-view="thematic">Cartes th&eacute;matiques</button><button class="nav-tab" data-view="keys">Chiffres cl&eacute;s 2026</button><button class="nav-tab" data-view="tables">Tableaux RGPH 2026</button><button class="nav-tab" data-view="cee">CEE 2026</button><button class="nav-tab" data-view="concepts">Concepts et d&eacute;finitions</button></nav></header>
+<main class="workspace"><aside class="sidebar" id="indicator-sidebar">
+<div class="panel-heading">Indicateurs statistiques <button type="button" id="sidebar-toggle" class="sidebar-toggle" aria-label="Masquer le panneau" title="Masquer le panneau">&#x276E;</button><span class="heading-icon">▤</span></div>
+<label class="search-box"><span>⌕</span><input id="indicator-search" type="search" placeholder="Rechercher un indicateur…" aria-label="Rechercher un indicateur"></label>
+<nav id="indicator-catalog" aria-label="Indicateurs par thème">
+<details class="theme" open><summary>Recensement général de la population et de l’habitat</summary>
+<details class="indicator-group" open><summary>Démographie</summary><div class="theme-items"><button class="indicator-item" data-metric="population">Population totale</button><button class="indicator-item" data-metric="households">Nombre de ménages</button></div></details>
+<details class="indicator-group"><summary>Santé</summary><div class="theme-items"><button class="indicator-item" data-metric="healthRate">Accès aux soins (%)</button><button class="indicator-item" data-metric="disabilityRate">Taux de handicap (%)</button></div></details>
+<details class="indicator-group"><summary>Éducation et alphabétisation</summary><div class="theme-items"><button class="indicator-item" data-metric="literacyRate">Taux d’alphabétisation (%)</button><details class="school-level"><summary>Pr&eacute;scolaire</summary><div class="theme-items"><button class="indicator-item" data-metric="illiteracyPreschoolAll">Analphab&eacute;tisme - Ensemble (%)</button><button class="indicator-item" data-metric="illiteracyPreschoolGirls">Analphab&eacute;tisme - Filles (%)</button><button class="indicator-item" data-metric="illiteracyPreschoolBoys">Analphab&eacute;tisme - Gar&ccedil;ons (%)</button></div></details><details class="school-level"><summary>Primaire</summary><div class="theme-items"><button class="indicator-item" data-metric="illiteracyPrimaryAll">Analphab&eacute;tisme - Ensemble (%)</button><button class="indicator-item" data-metric="illiteracyPrimaryGirls">Analphab&eacute;tisme - Filles (%)</button><button class="indicator-item" data-metric="illiteracyPrimaryBoys">Analphab&eacute;tisme - Gar&ccedil;ons (%)</button></div></details><details class="school-level"><summary>Coll&egrave;ge</summary><div class="theme-items"><button class="indicator-item" data-metric="illiteracyCollegeAll">Analphab&eacute;tisme - Ensemble (%)</button><button class="indicator-item" data-metric="illiteracyCollegeGirls">Analphab&eacute;tisme - Filles (%)</button><button class="indicator-item" data-metric="illiteracyCollegeBoys">Analphab&eacute;tisme - Gar&ccedil;ons (%)</button></div></details><details class="school-level"><summary>Lyc&eacute;e</summary><div class="theme-items"><button class="indicator-item" data-metric="illiteracyHighAll">Analphab&eacute;tisme - Ensemble (%)</button><button class="indicator-item" data-metric="illiteracyHighGirls">Analphab&eacute;tisme - Filles (%)</button><button class="indicator-item" data-metric="illiteracyHighBoys">Analphab&eacute;tisme - Gar&ccedil;ons (%)</button></div></details><details class="school-level"><summary>Sup&eacute;rieur</summary><div class="theme-items"><button class="indicator-item" data-metric="illiteracyHigherAll">Analphab&eacute;tisme - Ensemble (%)</button><button class="indicator-item" data-metric="illiteracyHigherGirls">Analphab&eacute;tisme - Filles (%)</button><button class="indicator-item" data-metric="illiteracyHigherBoys">Analphab&eacute;tisme - Gar&ccedil;ons (%)</button></div></details></div></details>
+<details class="indicator-group"><summary>Langue maternelle</summary><div class="theme-items"><button class="indicator-item" data-metric="languageShare">Langue dominante (%)</button></div></details>
+<details class="indicator-group"><summary>Activité économique</summary><div class="theme-items"><button class="indicator-item" data-metric="economicRate">Taux d’activité (%)</button><button class="indicator-item" data-metric="establishments">Établissements économiques</button></div></details>
+<details class="indicator-group"><summary>Conditions d’habitat</summary><div class="theme-items"><button class="indicator-item" data-metric="housingRate">Logement équipé (%)</button><button class="indicator-item" data-metric="homelessRate">Population sans abri (%)</button></div></details>
+<details class="indicator-group"><summary>Pauvreté multidimensionnelle</summary><div class="theme-items"><button class="indicator-item" data-metric="povertyRate">Indice de pauvreté (%)</button></div></details></details>
+<details class="theme"><summary>Cartographie des établissements économiques</summary><details class="indicator-group" open><summary>Établissements</summary><div class="theme-items"><button class="indicator-item" data-metric="establishments">Nombre d’établissements</button><button class="indicator-item" data-metric="economicRate">Part des actifs (%)</button></div></details></details></nav>
+<section class="geography-panel"><div class="panel-heading geography-heading">Territoire sélectionné</div><h2 id="selected-region-name">Vue nationale</h2><span class="selection-badge" id="selected-region-badge">République du Niger · 8 régions</span><div class="region-list-panel"><strong>Les 8 régions</strong><div id="region-list" class="region-list" aria-label="Liste défilante des régions du Niger"></div></div><div id="region-details"><p class="sidebar-hint">Cliquez sur une région pour afficher ses départements.</p></div></section><p class="data-note">Données de démonstration : populations et ménages estimés, taux fictifs à remplacer par les données officielles.</p>
+</aside><section class="map-section" aria-label="Carte administrative du Niger"><div class="map-toolbar"><div><strong>Carte administrative</strong><span id="view-status">Régions et départements du Niger</span></div><div class="territory-search-wrap"><label class="territory-search"><span>⌕</span><input id="territory-search" type="search" autocomplete="off" placeholder="Région, département, commune…" aria-label="Rechercher une région, un département ou une commune"></label><div id="territory-suggestions" class="territory-suggestions" role="listbox" hidden></div></div><label class="value-mode">Affichage <select id="value-mode"><option value="value">Chiffres</option><option value="percent">Pourcentages</option></select></label><button id="export-selection" type="button">Exporter la sélection</button><button id="national-view" type="button">Vue nationale</button></div><div id="view-panel" class="view-panel" hidden></div><button id="sidebar-reopen" type="button" aria-label="R&eacute;ouvrir le panneau des indicateurs" title="Afficher les indicateurs">Indicateurs</button><div id="map"></div><div class="map-actions" aria-label="Map tools"><button type="button" data-action="zoom-in" title="Zoom in" aria-label="Zoom in">+</button><button type="button" data-action="zoom-out" title="Zoom out" aria-label="Zoom out">&#x2212;</button><button type="button" data-action="search" title="Search a territory" aria-label="Search">&#x2315;</button><button type="button" data-action="print" title="Print" aria-label="Print">&#x25A3;</button><button type="button" data-action="excel" title="Download Excel" aria-label="Export Excel">&#x25A6;</button><button type="button" data-action="word" title="Download Word" aria-label="Export Word">W</button><button type="button" data-action="fullscreen" title="Full screen" aria-label="Full screen">&#x26F6;</button><button type="button" data-action="labels" title="Show or hide department labels" aria-label="Toggle department labels">&#x25C9;</button><button type="button" class="map-mode-button active" data-map-mode="regions" title="Regional map">Carte</button><button type="button" class="map-mode-button" data-map-mode="bubbles" title="Bubble map">Bulles</button><select id="language-select" class="tool-language" aria-label="Translate interface" title="Language"><option value="fr">FR</option><option value="en">EN</option><option value="es">ES</option><option value="ar">AR</option><option value="ha">HA</option></select></div><div id="action-notice" role="status" aria-live="polite"></div><div class="map-legend"><i></i> Région <b></b> Département</div></section></main><div id="region-data-modal" class="region-modal" hidden role="dialog" aria-modal="true" aria-labelledby="region-modal-title"><div class="region-modal-card"><header><h2 id="region-modal-title"></h2><button type="button" id="region-modal-close" aria-label="Fermer">&times;</button></header><div class="region-modal-actions"><button type="button" id="region-modal-print">Imprimer cette fiche</button></div><div id="region-modal-content" class="region-modal-content"></div></div></div></div>
 <style>
-    /* Reset et configuration plein écran */
-    html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+:root{--ins-orange:#f28c00;--ins-green:#078347;--ins-dark:#15372b;--line:#e5e9e6;--muted:#77827d}*{box-sizing:border-box}body{margin:0;font-family:Inter,"Segoe UI",Arial,sans-serif;color:#23352c;background:#f5f7f5}.rgph-page{min-height:100vh}.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 26px;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 2px 10px #1437280d}.brand{display:flex;align-items:center;gap:12px;color:var(--ins-dark);text-decoration:none}.brand-mark{width:52px;height:52px;flex:none}.brand-copy{display:flex;flex-direction:column;gap:3px}.brand-copy strong{color:var(--ins-green);font-size:16px;letter-spacing:.04em}.brand-copy small{color:var(--muted);font-size:11px}.topbar-meta{display:flex;align-items:center;gap:9px;color:#59675f;font-size:13px}.top-nav{display:flex;align-self:stretch;align-items:center;gap:4px;margin-left:auto;margin-right:18px}.nav-tab{height:100%;padding:0 12px;border:0;border-bottom:3px solid transparent;background:transparent;color:#34453b;font:inherit;font-size:12px;white-space:nowrap;cursor:pointer}.nav-tab:hover,.nav-tab.active{color:#a9154b}.nav-tab.active{border-bottom-color:#078347}.brand-mark{width:66px;height:60px;flex:none}.flag-dot{width:11px;height:11px;border-radius:50%;background:var(--ins-orange);box-shadow:0 0 0 3px #fff0d9}.workspace{display:flex;min-height:calc(100vh - 76px)}.sidebar{width:340px;flex:0 0 340px;max-height:calc(100vh - 76px);overflow-y:auto;padding:18px 16px;background:#fff;border-right:1px solid var(--line)}.panel-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;color:var(--ins-dark);font-weight:700;font-size:14px}.heading-icon{color:var(--ins-green);font-size:19px}.search-box{display:flex;align-items:center;gap:8px;height:40px;margin-bottom:12px;padding:0 11px;border:1px solid #dfe6e1;border-radius:7px;color:var(--muted)}.search-box span{font-size:23px;line-height:1}.search-box input{width:100%;border:0;outline:0;color:var(--ins-dark);font:inherit;font-size:13px}.theme{margin-bottom:8px;border:1px solid var(--line);border-radius:7px;background:#fff;overflow:hidden}.theme summary{position:relative;padding:11px 30px 11px 12px;color:#374a3f;font-size:12px;line-height:1.4;cursor:pointer;list-style:none}.theme summary::-webkit-details-marker{display:none}.theme summary:before{content:'›';position:absolute;right:12px;color:var(--ins-orange);font-size:20px;top:6px}.theme[open] summary{color:var(--ins-green);font-weight:700;background:#f4faf6}.theme[open] summary:before{transform:rotate(90deg)}.theme-items{padding:3px 8px 8px}.indicator-item{width:100%;display:flex;justify-content:space-between;align-items:center;gap:7px;padding:8px 5px;border:0;border-bottom:1px solid #f0f2f0;background:#fff;text-align:left;color:#48574f;font:inherit;font-size:12px;cursor:pointer}.indicator-item:hover{color:var(--ins-green);background:#f6faf7}.indicator-item:last-child{border-bottom:0}.indicator-item span{flex:none;color:#9b6a16;font-size:9px;background:#fff4df;border-radius:10px;padding:3px 6px}.geography-panel{margin-top:17px;padding-top:15px;border-top:1px solid var(--line)}.geography-heading{margin-bottom:8px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-size:10px}#selected-region-name{margin:0 0 7px;color:var(--ins-green);font-size:17px}.selection-badge{display:inline-block;padding:6px 9px;border-radius:5px;background:#fff3df;color:#98600b;font-size:11px;font-weight:600}.region-list-panel{margin-top:12px}.region-list-panel>strong{display:block;margin-bottom:6px;color:var(--ins-dark);font-size:11px}.region-list{max-height:150px;overflow-y:auto;border:1px solid var(--line);border-radius:6px;background:#fff}.region-list button{display:block;width:100%;padding:8px 10px;border:0;border-bottom:1px solid #edf0ed;background:#fff;color:#405247;text-align:left;font:inherit;font-size:12px;cursor:pointer}.region-list button:last-child{border-bottom:0}.region-list button:hover,.region-list button.selected{background:#eaf6ee;color:var(--ins-green);font-weight:700}.selected-commune{background:#fff7e9}.selected-commune .territory-item{color:#ad6900;font-weight:700}#region-details{margin-top:9px;font-size:12px}#region-details ul{max-height:185px;overflow-y:auto;margin:5px 0 8px;padding:0;list-style:none}#region-details li{padding:6px 3px;border-bottom:1px solid #edf0ed}#region-details button,#national-view{padding:7px 10px;border:1px solid #cbd9cf;border-radius:5px;background:#fff;color:var(--ins-green);font:inherit;font-size:11px;cursor:pointer}#region-details button:hover,#national-view:hover{background:#eff8f2}.sidebar-hint,.data-note{color:var(--muted);font-size:11px;line-height:1.5}.data-note{margin:13px 0 0;padding:9px;border-radius:5px;background:#f7f8f7}.map-section:fullscreen{height:100vh;width:100vw;background:#f5f7f5}.map-section{position:relative;display:flex;flex:1;flex-direction:column;min-width:0;padding:15px 18px 18px}.territory-search-wrap{position:relative;width:min(330px,38%);z-index:1200}.territory-search{display:flex;align-items:center;gap:8px;width:100%;height:36px;padding:0 10px;border:1px solid #dfe6e1;border-radius:6px;background:white;color:var(--muted)}.territory-suggestions{position:absolute;top:calc(100% + 5px);left:0;right:0;max-height:260px;overflow-y:auto;border:1px solid #dfe6e1;border-radius:7px;background:#fff;box-shadow:0 8px 22px #17372826}.territory-suggestions[hidden]{display:none}.territory-suggestions button{display:block;width:100%;padding:9px 11px;border:0;border-bottom:1px solid #edf0ed;background:#fff;color:#34453b;text-align:left;font:inherit;font-size:11px;cursor:pointer}.territory-suggestions button:hover,.territory-suggestions button:focus{background:#eef8f1;color:var(--ins-green);outline:0}.territory-suggestions .no-result{padding:12px;color:var(--muted);font-size:11px}.territory-search span{font-size:21px}.territory-search input{width:100%;border:0;outline:0;background:transparent;color:var(--ins-dark);font:inherit;font-size:11px}.map-actions{position:absolute;z-index:500;top:82px;right:27px;display:flex;flex-direction:column;gap:7px}.map-actions button{width:40px;height:40px;border:0;border-radius:6px;background:#76003e;color:#fff;font-size:18px;font-weight:700;box-shadow:0 2px 6px #0003;cursor:pointer}.map-actions button:hover{background:#078347}.map-actions .map-mode-button{width:62px;height:34px;font-size:10px}.map-actions .map-mode-button.active{background:var(--ins-green)}.map-actions .tool-language{width:48px;height:36px;padding:0 3px;border:0;border-radius:6px;background:#76003e;color:#fff;font:inherit;font-size:11px;font-weight:700;box-shadow:0 2px 6px #0003;cursor:pointer}.map-actions .tool-language option{background:#fff;color:#23352c}#action-notice{position:absolute;z-index:600;top:84px;left:50%;transform:translateX(-50%);max-width:60%;padding:9px 14px;border-radius:6px;background:#15372beF;color:#fff;font-size:12px;opacity:0;pointer-events:none;transition:opacity .2s}#action-notice.visible{opacity:1}.hide-department-labels .dept-marker-label{display:none}.selected-dept-label{background:#f28c00!important;color:#15372b!important}.view-panel{position:relative;z-index:20;max-height:220px;overflow:auto;margin:0 0 9px;padding:12px;border:1px solid #e0e7e2;border-radius:8px;background:#fff;box-shadow:0 2px 8px #1737280d}.view-panel[hidden]{display:none}.database-panel{max-height:55vh}.database-status{padding:8px 10px;border-radius:5px;background:#eaf6ee;color:#17643e;font-size:11px}.database-status.database-offline{background:#fff2de;color:#8e5b06}.database-panel h4{margin:10px 0 6px;color:var(--ins-dark);font-size:12px}.database-table-wrap{max-width:100%;overflow:auto;border:1px solid #e5e9e6;border-radius:5px}.database-panel table{width:max-content;min-width:100%;border-collapse:collapse;font-size:10px;white-space:nowrap}.database-panel th,.database-panel td{padding:6px 8px;border-bottom:1px solid #edf0ed;text-align:left}.database-panel th{position:sticky;top:0;background:#eaf6ee;color:var(--ins-green)}.view-panel h3{margin:0 0 9px;color:var(--ins-green);font-size:14px}.metric-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:8px}.metric-card{padding:10px;border:1px solid #edf0ed;border-radius:6px;background:#f9fbf9}.metric-card strong{display:block;color:var(--ins-green);font-size:18px}.metric-card span{font-size:10px;color:#65736a}.table-controls{display:flex;gap:8px;margin-bottom:9px}.table-controls input{flex:1;min-width:160px;padding:7px;border:1px solid #dfe6e1;border-radius:5px;font:inherit}.table-controls button{padding:7px 10px;border:0;border-radius:5px;background:var(--ins-green);color:#fff;cursor:pointer}.view-panel tbody tr{cursor:pointer}.view-panel tbody tr:hover{background:#fff5e5}.view-panel dl{display:grid;grid-template-columns:minmax(130px,1fr) 3fr;gap:4px 12px;margin:4px 0;font-size:12px}.view-panel dt{color:var(--ins-green);font-weight:700}.view-panel dd{margin:0 0 6px}.map-actions button.active{background:var(--ins-orange)}.view-panel table{width:100%;border-collapse:collapse;font-size:11px}.view-panel th,.view-panel td{padding:6px 8px;border-bottom:1px solid #edf0ed;text-align:left}.view-panel th{color:var(--ins-green);background:#f3f8f4}.demo-label{margin-left:8px;padding:3px 7px;border-radius:9px;background:#fff2db;color:#976000;font-size:9px}.map-toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;min-height:46px;margin-bottom:10px}.value-mode{display:flex;align-items:center;gap:5px;color:var(--muted);font-size:11px}.value-mode select,.map-toolbar>button{height:34px;padding:0 9px;border:1px solid #cbd9cf;border-radius:5px;background:#fff;color:var(--ins-green);font:inherit;font-size:11px;cursor:pointer}#export-selection{background:var(--ins-green);color:white}.territory-item{border:0;background:transparent;color:var(--ins-green);font:inherit;font-size:11px;text-align:left;cursor:pointer}.territory-item:hover{text-decoration:underline}.area-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px;margin:8px 0}.area-stat-grid>div{padding:6px;border-radius:4px;background:#f5f8f5}.area-stat-grid span,.area-stat-grid strong{display:block}.area-stat-grid span{color:var(--muted);font-size:9px}.area-stat-grid strong{color:var(--ins-green);font-size:12px}.region-tooltip{min-width:48px;max-width:110px;padding:3px 6px;text-align:center;font-size:10px;white-space:normal;line-height:1.25}.map-toolbar div{display:flex;flex-direction:column;gap:3px}.map-toolbar strong{color:var(--ins-dark);font-size:14px}.map-toolbar span{color:var(--muted);font-size:11px}#map{flex:1;min-height:420px;width:100%;border:1px solid #dce3de;border-radius:9px;background:#fff;cursor:grab;box-shadow:0 2px 10px #1b36270f}#map:active{cursor:grabbing}.map-legend{position:absolute;right:31px;bottom:29px;display:flex;align-items:center;gap:6px;padding:7px 10px;border:1px solid #e5e9e6;border-radius:5px;background:#fffffff2;color:#59675f;font-size:10px;pointer-events:none}.map-legend i{width:9px;height:9px;border:2px solid #fff;border-radius:50%;background:var(--ins-orange);box-shadow:0 0 0 1px var(--ins-orange)}.map-legend b{width:10px;height:10px;border-radius:2px;background:var(--ins-green)}.custom-dept-marker{background:transparent;border:0}.dept-marker-label{display:inline-block;padding:1px 4px;border:1px solid #fff;border-radius:3px;background:var(--ins-green);color:#fff;font-size:9px;line-height:1.2;white-space:nowrap;box-shadow:0 1px 3px #0004}.region-tooltip{padding:3px 7px;border:1px solid var(--ins-green);border-radius:5px;color:#075c36;background:#fffffff5;font-size:11px;font-weight:700;box-shadow:0 1px 4px #0003}.leaflet-tooltip.region-tooltip:before{display:none}.region-tooltip{max-width:76px;padding:2px 4px;font-size:9px!important;line-height:1.1}.table-level-tabs button{padding:7px 12px;border:1px solid #cbd9cf;border-radius:5px;background:#fff;color:var(--ins-green);font:inherit;font-size:11px;cursor:pointer}.table-level-tabs button.active{background:var(--ins-green);color:#fff}.indicator-group{margin:3px 8px;border-left:2px solid #e9eee9}.indicator-group>summary{padding:7px 9px;color:#526158;font-size:11px;cursor:pointer;list-style:none}.indicator-group>summary:before{content:"\203A";display:inline-block;width:17px;color:var(--ins-orange);font-size:17px}.indicator-group[open]>summary:before{transform:rotate(90deg)}.region-modal{position:fixed;inset:0;z-index:3000;display:grid;place-items:center;padding:20px;background:#0007}.region-modal[hidden]{display:none}.region-modal-card{width:min(900px,96vw);max-height:90vh;overflow:auto;border-radius:8px;background:white;box-shadow:0 16px 55px #0004}.region-modal-card>header{position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:#76003e;color:#fff}.region-modal-card h2{margin:0;font-size:19px}.region-modal-card header button{border:0;background:transparent;color:white;font-size:27px;cursor:pointer}.region-modal-actions{padding:14px 20px 6px}.region-modal-actions button{padding:8px 13px;border:1px solid #ccc;border-radius:4px;background:#f5f5f5;font:inherit;cursor:pointer}.region-modal-content{padding:0 20px 24px}.region-modal-content h3{padding:9px;text-align:center;background:#eee;color:#76003e;font-size:14px}.region-modal-content table{width:100%;border-collapse:collapse;font-size:12px}.region-modal-content th,.region-modal-content td{padding:8px;border-bottom:1px solid #ddd;text-align:left}.region-modal-note{color:#856000;font-size:11px}@media print{body.region-report-print *{visibility:hidden!important}body.region-report-print #region-data-modal,body.region-report-print #region-data-modal *{visibility:visible!important}body.region-report-print #region-data-modal{position:absolute;inset:0;display:block;padding:0;background:white}body.region-report-print .region-modal-card{width:100%;max-height:none;overflow:visible;box-shadow:none}body.region-report-print .region-modal-card>header{position:static}body.region-report-print .region-modal-actions,body.region-report-print #region-modal-close{display:none!important}}@media(max-width:820px){.topbar{height:auto;min-height:66px;padding:8px 13px;flex-wrap:wrap}.top-nav{order:3;width:100%;height:38px;overflow-x:auto;margin:4px 0 -8px}.nav-tab{padding:0 9px;font-size:10px}.topbar-meta{display:flex}.brand-mark{width:43px;height:43px}.brand-copy small{display:none}.topbar-meta{font-size:10px}.workspace{min-height:calc(100vh - 66px);flex-direction:column}.sidebar{width:100%;flex:none;max-height:39vh;padding:12px;border-right:0;border-bottom:1px solid var(--line)}.map-section{min-height:58vh;padding:10px}.territory-search-wrap{width:44%}.territory-search{width:100%}.map-actions{right:17px;top:70px;gap:5px}.map-actions button{width:34px;height:34px}#map{min-height:48vh}}
+@media print{body{background:#fff}.topbar,.sidebar,.map-toolbar,.map-actions,.map-legend,#action-notice{display:none!important}.workspace,.map-section{display:block;min-height:0;height:auto;padding:0}#map{height:95vh!important;min-height:0;border:0;box-shadow:none}}
+.school-level{margin:4px 0 4px 10px;border-left:2px solid #edf0ed}.school-level>summary{padding:6px 8px;color:#59675f;font-size:11px;cursor:pointer;list-style:none}.school-level>summary:before{content:"+";display:inline-block;width:17px;color:var(--ins-orange);font-weight:700}.school-level[open]>summary:before{content:"\203A"}.rgph-splash{position:fixed;inset:0;z-index:5000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:#fff;color:var(--ins-dark);transition:opacity .45s ease,visibility .45s ease}.rgph-splash.is-leaving{opacity:0;visibility:hidden}.splash-flag{position:relative;width:180px;height:112px;display:flex;flex-direction:column;overflow:hidden;border:1px solid #e7e7e7;box-shadow:0 8px 26px #15372b20}.splash-flag>span{height:36px;flex:1}.splash-flag>span:first-child{background:#e97810}.splash-flag>span:last-child{background:#0b8a4b}.splash-flag:before{position:absolute;inset:36px 0;content:"";background:#fff}.splash-flag i{position:absolute;top:42px;left:calc(50% - 15px);width:30px;height:30px;border-radius:50%;background:#e97810}.rgph-splash strong{color:#078347;font-size:19px;letter-spacing:.08em}.rgph-splash small{color:#77827d}.splash-progress{width:180px;height:4px;overflow:hidden;border-radius:4px;background:#e8eee9}.splash-progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,#f28c00,#078347);animation:splash-load 5.5s linear forwards}@keyframes splash-load{to{width:100%}}.map-actions button{background:#078347}.map-actions button:hover,.map-actions button.active{background:#f28c00;color:#17372a}.map-actions .map-mode-button.active{background:#f28c00}.map-actions .tool-language{background:#078347}.map-actions .tool-language:hover,.map-actions .tool-language:focus{background:#f28c00;color:#17372a}.region-tooltip{z-index:650!important}.leaflet-control-attribution{font-size:0!important}.leaflet-control-attribution a,.leaflet-control-attribution span{font-size:10px!important}@media(max-width:820px){.map-actions .map-mode-button{width:60px!important}.map-actions .tool-language{width:44px}}
+/* Banni?re RGPH et palette du drapeau */
+.topbar{height:auto;min-height:142px;padding:0;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start}.brand-banner{width:100%;height:94px;display:flex;align-items:center;gap:12px;padding:7px 24px;text-decoration:none;background:#fff}.banner-niger{width:82px;height:78px;object-fit:contain;flex:none}.banner-title{height:100%;flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:3px;padding:8px 20px;background:var(--ins-orange);border-bottom:5px solid var(--ins-green);color:#fff}.banner-title strong{font-size:25px;line-height:1.1}.banner-title span{font-size:clamp(10px,1.2vw,15px);font-weight:650;letter-spacing:.025em}.banner-rgph,.banner-ins{width:76px;height:78px;object-fit:contain;flex:none}.top-nav{width:100%;height:48px;min-height:48px;align-self:auto;justify-content:center;gap:0;margin:0;padding:0 12px;border-top:1px solid var(--line);background:#fff}.nav-tab{height:48px}.nav-tab:hover,.nav-tab:focus-visible{color:var(--ins-orange);background:#fff8ed}.nav-tab.active{color:var(--ins-green);border-bottom-color:var(--ins-orange);background:#fffaf2}.workspace{min-height:calc(100vh - 142px)}.sidebar{transition:flex-basis .25s,width .25s,padding .25s,opacity .18s;position:relative}.sidebar-toggle{margin-left:auto;border:0;background:transparent;color:var(--ins-green);font-size:17px;cursor:pointer}.sidebar-toggle:hover{color:var(--ins-orange)}.sidebar-collapsed .sidebar{width:0;flex-basis:0;padding-left:0;padding-right:0;overflow:hidden;opacity:0;border:0}#sidebar-reopen{display:none;position:absolute;z-index:700;left:12px;top:70px;padding:9px 12px;border:1px solid var(--ins-green);border-radius:6px;background:#fff;color:var(--ins-green);font:inherit;font-size:12px;box-shadow:0 2px 7px #0002;cursor:pointer}.sidebar-collapsed #sidebar-reopen{display:block}.indicator-item:hover,.indicator-item:focus-visible,.indicator-item.selected{color:var(--ins-green);background:#eef8f1;box-shadow:inset 3px 0 var(--ins-orange);outline:0}.theme summary:hover,.indicator-group>summary:hover{color:var(--ins-orange);background:#fff8ec}.region-list button:hover,.region-list button:focus-visible,.region-list button.selected{background:#fff4e2;color:#078347;box-shadow:inset 3px 0 var(--ins-orange)}.map-actions button,.map-actions .tool-language{background:var(--ins-green)}.map-actions button:nth-child(even),.map-actions button:hover,.map-actions button.active,.map-actions .tool-language:hover{background:var(--ins-orange);color:#fff}.region-modal-card>header{background:var(--ins-green);color:#fff}.region-modal-content h3{background:#fff0d8;color:var(--ins-green);border-left:4px solid var(--ins-orange)}.region-modal-actions button{border:1px solid var(--ins-green);background:var(--ins-green);color:#fff}.region-modal-actions button:hover{background:var(--ins-orange);border-color:var(--ins-orange)}.region-modal-note{padding:8px;background:#f2f8f3;color:var(--ins-green)}.region-modal-content td:last-child{color:var(--ins-green);font-weight:700}.region-modal-content tr:hover{background:#fff8ec}.concepts-panel{max-height:38vh}.concepts-panel dl{line-height:1.55}.concepts-panel dt{margin-top:8px}.concepts-panel dd{color:#53645a}
+@media(max-width:820px){.topbar{height:auto;min-height:0;padding:0}.brand-banner{height:72px;gap:6px;padding:5px 8px}.banner-niger,.banner-rgph,.banner-ins{width:48px;height:58px}.banner-title{padding:5px 8px}.banner-title strong{font-size:18px}.banner-title span{font-size:8px}.top-nav{order:0;height:38px;min-height:38px;justify-content:flex-start;overflow-x:auto;margin:0;padding:0 5px}.nav-tab{height:38px;padding:0 9px;font-size:10px}.workspace{min-height:calc(100vh - 110px);flex-direction:row}.sidebar{width: min(42vw,320px);flex:0 0 min(42vw,320px);max-height:calc(100vh - 110px);padding:12px}.sidebar-collapsed .sidebar{width:0;flex-basis:0;padding-left:0;padding-right:0}.map-section{min-height:calc(100vh - 110px);padding:10px}#sidebar-reopen{top:55px;left:8px}.concepts-panel{max-height:30vh}}
+</style>    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
-    .main-wrapper {
-        display: flex;
-        height: 100vh;
-        width: 100vw;
-    }
-
-    /* Barre latérale gauche épurée aux couleurs de l'INS Niger */
-    .sidebar {
-        width: 280px;
-        min-width: 280px;
-        height: 100vh;
-        background-color: #ffffff;
-        border-right: 4px solid #008751; /* Vert officiel INS */
-        display: flex;
-        flex-direction: column;
-        box-shadow: 4px 0 15px rgba(0,0,0,0.05);
-        z-index: 1000;
-    }
-
-    .sidebar-header {
-        background: linear-gradient(135deg, #008751 0%, #00663b 100%);
-        color: white;
-        padding: 20px;
-        text-align: center;
-        border-bottom: 5px solid #F2A900; /* Orange officiel INS */
-    }
-
-    .sidebar-body {
-        padding: 20px;
-        flex-grow: 1;
-        overflow-y: auto;
-    }
-
-    /* Conteneur de la carte prenant tout l'espace restant */
-    .map-container {
-        flex: 1;
-        height: 100vh;
-        position: relative;
-    }
-
-    #map {
-        width: 100%;
-        height: 100%;
-        background-color: #f8f9fa;
-    }
-</style>
-
-<div class="main-wrapper">
-    <!-- 1. BARRE LATÉRALE ÉPURÉE -->
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <h4 class="m-0 fw-bold">RGPH NIGER</h4>
-            <small class="text-white-50">Géoportail Officiel</small>
-        </div>
-        <div class="sidebar-body text-center">
-            <div class="p-3 rounded text-white shadow-sm mb-3" style="background-color: #008751;">
-                <h6 class="fw-bold m-0">République du Niger</h6>
-                <small>8 Régions • 63 Départements</small>
-            </div>
-            <p class="text-muted small fst-italic">Zoomez sur la carte pour basculer de la vue régionale à la vue départementale.</p>
-        </div>
-    </div>
-
-    <!-- 2. CARTE INTERACTIVE PLEIN ÉCRAN -->
-    <div class="map-container">
-        <div id="map"></div>
-    </div>
-</div>
-
-<!-- Leaflet CSS & JS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Initialisation de la carte centrée sur le Niger
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="{{ app.request.basePath }}/data/communes-niger.js"></script>
+    <script src="{{ app.request.basePath }}/data/rgph-demo.js"></script>
+    <script>
+        // 1. Initialisation de la carte Leaflet
         var map = L.map('map', {
             zoomControl: true,
-            worldCopyJump: false
-        }).setView([17.6078, 8.0817], 6);
+            dragging: true,
+            scrollWheelZoom: true,
+            doubleClickZoom: true,
+            minZoom: 4,
+            maxZoom: 16
+        }).setView([17.2, 8.0], 6);
+        map.dragging.enable();
+        map.attributionControl.setPrefix(false);
 
-        // Fond de carte épuré
+        // Fond de carte OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors - RGPH Niger',
-            maxZoom: 18,
-            minZoom: 5
+            attribution: '© OpenStreetMap contributors - RGPH Niger'
         }).addTo(map);
 
-        // --- MASQUE INVERSÉ : Cache tous les pays extérieurs au Niger ---
-        // Coordonnées simplifiées du contour extérieur du Niger (le "trou" du masque)
-        var nigerOuterRing = [
-            [23.5, 12.0], [21.5, 15.0], [18.0, 15.8], [15.2, 13.0], 
-            [13.5, 14.5], [12.4, 14.1], [11.7, 10.0], [12.3, 7.5], 
-            [11.9, 3.5], [13.2, 2.5], [14.5, 0.2], [17.5, 3.5], 
-            [19.0, 5.0], [21.0, 8.0], [23.5, 12.0]
-        ];
-
-        // Polygone mondial externe + trou du Niger
-        var worldMaskCoords = [
-            [
-                [-90, -180], [-90, 180], [90, 180], [90, -180], [-90, -180] // Anneau extérieur (monde)
-            ],
-            nigerOuterRing // Anneau intérieur (le Niger laissé visible)
-        ];
-
-        // Application du masque (couleur blanche opaque/semi-opaque par-dessus les autres pays)
-        L.polygon(worldMaskCoords, {
-            color: '#008751',
-            weight: 3,
-            fillColor: '#ffffff',
-            fillOpacity: 0.85
-        }).addTo(map);
-        // -------------------------------------------------------------
-
-        // Données des 8 Régions du Niger
+        // Données des 8 régions principales
         var regionsData = [
-            {name: "Agadez", coords: [16.9667, 7.9833], depts: 6},
-            {name: "Diffa", coords: [13.3153, 12.6111], depts: 6},
-            {name: "Dosso", coords: [13.0490, 3.1937], depts: 8},
-            {name: "Maradi", coords: [13.5000, 7.1017], depts: 8},
-            {name: "Tahoua", coords: [14.8988, 5.2692], depts: 12},
-            {name: "Tillabéri", coords: [14.2071, 1.4542], depts: 13},
-            {name: "Zinder", coords: [13.8072, 8.9881], depts: 10},
-            {name: "Niamey", coords: [13.5116, 2.1254], depts: 1}
+            { name: "Agadez", lat: 16.9733, lng: 7.9911, pop: "569 000", menages: "85 000", deptCount: 6 },
+            { name: "Diffa", lat: 13.3154, lng: 12.6113, pop: "794 000", menages: "115 000", deptCount: 6 },
+            { name: "Dosso", lat: 13.0490, lng: 3.1937, pop: "2 078 000", menages: "310 000", deptCount: 8 },
+            { name: "Maradi", lat: 13.5000, lng: 7.1000, pop: "3 840 000", menages: "520 000", deptCount: 8 },
+            { name: "Tahoua", lat: 14.8888, lng: 5.2692, pop: "3 328 000", menages: "450 000", deptCount: 12 },
+            { name: "Tillabéri", lat: 14.2071, lng: 1.4542, pop: "2 885 000", menages: "390 000", deptCount: 13 },
+            { name: "Zinder", lat: 13.8071, lng: 8.9881, pop: "3 535 000", menages: "480 000", deptCount: 10 },
+            { name: "Niamey", lat: 13.5116, lng: 2.1254, pop: "1 302 910", menages: "210 450", deptCount: 1 }
         ];
 
-        // Données des 63 Départements officiels du Niger
-        var deptsData = [
-            // Agadez
-            {name: "Aderbissinat", coords: [16.5, 7.5], region: "Agadez"},
-            {name: "Arlit", coords: [18.73, 7.38], region: "Agadez"},
-            {name: "Bilma", coords: [18.68, 12.91], region: "Agadez"},
-            {name: "Iférouane", coords: [19.07, 8.41], region: "Agadez"},
-            {name: "Ingall", coords: [16.78, 6.94], region: "Agadez"},
-            {name: "Tchirozérine", coords: [17.43, 6.65], region: "Agadez"},
-            // Diffa
-            {name: "Bosso", coords: [13.70, 13.31], region: "Diffa"},
-            {name: "Diffa", coords: [13.31, 12.61], region: "Diffa"},
-            {name: "Goudoumaria", coords: [13.88, 10.98], region: "Diffa"},
-            {name: "Maïné-Soroa", coords: [13.22, 12.02], region: "Diffa"},
-            {name: "N'Gourti", coords: [15.26, 12.96], region: "Diffa"},
-            {name: "N'Guigmi", coords: [14.25, 13.11], region: "Diffa"},
-            // Dosso
-            {name: "Boboye", coords: [13.28, 2.92], region: "Dosso"},
-            {name: "Dioundiou", coords: [12.65, 3.33], region: "Dosso"},
-            {name: "Dogondoutchi", coords: [13.64, 4.02], region: "Dosso"},
-            {name: "Dosso", coords: [13.04, 3.19], region: "Dosso"},
-            {name: "Falmèy", coords: [12.83, 2.80], region: "Dosso"},
-            {name: "Gaya", coords: [11.88, 3.39], region: "Dosso"},
-            {name: "Loga", coords: [13.61, 3.25], region: "Dosso"},
-            {name: "Tibiri", coords: [13.56, 3.73], region: "Dosso"},
-            // Maradi
-            {name: "Aguié", coords: [13.51, 7.78], region: "Maradi"},
-            {name: "Bermo", coords: [15.00, 7.53], region: "Maradi"},
-            {name: "Dakoro", coords: [14.51, 6.76], region: "Maradi"},
-            {name: "Gazaoua", coords: [13.93, 7.98], region: "Maradi"},
-            {name: "Guidan-Roumdji", coords: [13.93, 6.99], region: "Maradi"},
-            {name: "Madarounfa", coords: [13.31, 7.15], region: "Maradi"},
-            {name: "Mayahi", coords: [13.95, 7.67], region: "Maradi"},
-            {name: "Tessaoua", coords: [13.75, 7.98], region: "Maradi"},
-            // Tahoua
-            {name: "Abalak", coords: [15.45, 6.27], region: "Tahoua"},
-            {name: "Bagaroua", coords: [14.54, 4.75], region: "Tahoua"},
-            {name: "Birni N'Konni", coords: [13.80, 5.25], region: "Tahoua"},
-            {name: "Bouza", coords: [14.42, 6.04], region: "Tahoua"},
-            {name: "Illéla", coords: [14.46, 5.24], region: "Tahoua"},
-            {name: "Kéita", coords: [14.76, 5.77], region: "Tahoua"},
-            {name: "Madaoua", coords: [14.07, 5.96], region: "Tahoua"},
-            {name: "Malbaza", coords: [13.93, 5.75], region: "Tahoua"},
-            {name: "Tahoua", coords: [14.89, 5.26], region: "Tahoua"},
-            {name: "Tassara", coords: [16.85, 5.63], region: "Tahoua"},
-            {name: "Tchintabaraden", coords: [15.89, 5.80], region: "Tahoua"},
-            {name: "Tillia", coords: [16.03, 4.50], region: "Tahoua"},
-            // Tillabéri
-            {name: "Abala", coords: [14.95, 3.44], region: "Tillabéri"},
-            {name: "Ayérou", coords: [15.55, 1.47], region: "Tillabéri"},
-            {name: "Balleyara", coords: [13.75, 2.95], region: "Tillabéri"},
-            {name: "Banibangou", coords: [15.04, 2.65], region: "Tillabéri"},
-            {name: "Bankilaré", coords: [14.23, 0.72], region: "Tillabéri"},
-            {name: "Filingué", coords: [14.35, 3.31], region: "Tillabéri"},
-            {name: "Gothèye", coords: [13.96, 1.57], region: "Tillabéri"},
-            {name: "Kollo", coords: [13.31, 2.33], region: "Tillabéri"},
-            {name: "Ouallam", coords: [14.31, 2.08], region: "Tillabéri"},
-            {name: "Say", coords: [13.10, 2.36], region: "Tillabéri"},
-            {name: "Téra", coords: [14.00, 0.75], region: "Tillabéri"},
-            {name: "Tillabéri", coords: [14.20, 1.45], region: "Tillabéri"},
-            {name: "Torodi", coords: [13.14, 0.78], region: "Tillabéri"},
-            // Zinder
-            {name: "Belbédji", coords: [14.54, 9.35], region: "Zinder"},
-            {name: "Damagaram Takaya", coords: [13.94, 9.35], region: "Zinder"},
-            {name: "Dungass", coords: [13.10, 9.05], region: "Zinder"},
-            {name: "Gouré", coords: [13.98, 10.27], region: "Zinder"},
-            {name: "Magaria", coords: [12.99, 8.91], region: "Zinder"},
-            {name: "Matamèye", coords: [13.46, 8.47], region: "Zinder"},
-            {name: "Mirriah", coords: [13.71, 9.15], region: "Zinder"},
-            {name: "Tanout", coords: [14.97, 8.88], region: "Zinder"},
-            {name: "Takeita", coords: [13.82, 8.65], region: "Zinder"},
-            {name: "Tesker", coords: [15.86, 11.01], region: "Zinder"},
-            // Niamey
-            {name: "Niamey (Communauté Urbaine)", coords: [13.51, 2.12], region: "Niamey"}
+        // Liste officielle complète des 63 départements
+        var departementsData = [
+            // AGADEZ (6)
+            { region: "Agadez", name: "Aderbissinat", lat: 16.7167, lng: 8.4333 },
+            { region: "Agadez", name: "Arlit", lat: 18.7369, lng: 7.3853 },
+            { region: "Agadez", name: "Bilma", lat: 18.6853, lng: 12.9164 },
+            { region: "Agadez", name: "Iférouane", lat: 19.0733, lng: 8.3917 },
+            { region: "Agadez", name: "Ingall", lat: 16.7808, lng: 6.9450 },
+            { region: "Agadez", name: "Tchirozérine", lat: 17.2608, lng: 7.7539 },
+
+            // DIFFA (6)
+            { region: "Diffa", name: "Bosso", lat: 13.7047, lng: 13.4578 },
+            { region: "Diffa", name: "Diffa", lat: 13.3154, lng: 12.6113 },
+            { region: "Diffa", name: "Goudoumaria", lat: 13.2983, lng: 11.6031 },
+            { region: "Diffa", name: "Maïné-Soroa", lat: 13.2114, lng: 12.0242 },
+            { region: "Diffa", name: "N'Gourti", lat: 15.2644, lng: 14.7558 },
+            { region: "Diffa", name: "N'Guigmi", lat: 14.2483, lng: 13.1092 },
+
+            // DOSSO (8)
+            { region: "Dosso", name: "Boboye", lat: 13.3833, lng: 2.9167 },
+            { region: "Dosso", name: "Dioundiou", lat: 12.6833, lng: 3.4833 },
+            { region: "Dosso", name: "Dogondoutchi", lat: 13.6478, lng: 4.0286 },
+            { region: "Dosso", name: "Dosso", lat: 13.0490, lng: 3.1937 },
+            { region: "Dosso", name: "Falmèy", lat: 12.4833, lng: 3.1833 },
+            { region: "Dosso", name: "Gaya", lat: 11.8844, lng: 3.3950 },
+            { region: "Dosso", name: "Loga", lat: 13.6067, lng: 3.5333 },
+            { region: "Dosso", name: "Tibiri", lat: 13.5667, lng: 3.8333 },
+
+            // MARADI (8)
+            { region: "Maradi", name: "Aguié", lat: 13.5044, lng: 7.7928 },
+            { region: "Maradi", name: "Bermo", lat: 15.0000, lng: 7.5000 },
+            { region: "Maradi", name: "Dakoro", lat: 14.5106, lng: 6.7650 },
+            { region: "Maradi", name: "Gazaoua", lat: 13.5283, lng: 8.1633 },
+            { region: "Maradi", name: "Guidan-Roumdji", lat: 13.9483, lng: 6.6631 },
+            { region: "Maradi", name: "Madarounfa", lat: 13.3131, lng: 7.1539 },
+            { region: "Maradi", name: "Mayahi", lat: 13.9556, lng: 7.6711 },
+            { region: "Maradi", name: "Tessaoua", lat: 13.7583, lng: 7.9878 },
+
+            // TAHOUA (12)
+            { region: "Tahoua", name: "Abalak", lat: 15.4528, lng: 6.2758 },
+            { region: "Tahoua", name: "Bagaroua", lat: 14.5333, lng: 4.9667 },
+            { region: "Tahoua", name: "Birni N'Konni", lat: 13.7958, lng: 5.2533 },
+            { region: "Tahoua", name: "Bouza", lat: 14.4258, lng: 6.0353 },
+            { region: "Tahoua", name: "Illéla", lat: 14.4611, lng: 5.2439 },
+            { region: "Tahoua", name: "Kéita", lat: 14.7550, lng: 5.7725 },
+            { region: "Tahoua", name: "Madaoua", lat: 14.0731, lng: 5.9600 },
+            { region: "Tahoua", name: "Malbaza", lat: 13.9667, lng: 5.4833 },
+            { region: "Tahoua", name: "Tahoua", lat: 14.8888, lng: 5.2692 },
+            { region: "Tahoua", name: "Tassara", lat: 16.8286, lng: 4.9083 },
+            { region: "Tahoua", name: "Tchintabaraden", lat: 15.8969, lng: 5.7989 },
+            { region: "Tahoua", name: "Tillia", lat: 15.9667, lng: 4.8833 },
+
+            // TILLABÉRI (13)
+            { region: "Tillabéri", name: "Abala", lat: 14.9583, lng: 3.4483 },
+            { region: "Tillabéri", name: "Ayérou", lat: 15.4475, lng: 1.4731 },
+            { region: "Tillabéri", name: "Balleyara", lat: 13.6558, lng: 2.9556 },
+            { region: "Tillabéri", name: "Banibangou", lat: 15.0394, lng: 2.6758 },
+            { region: "Tillabéri", name: "Bankilaré", lat: 14.2375, lng: 0.7289 },
+            { region: "Tillabéri", name: "Filingué", lat: 14.3486, lng: 3.3156 },
+            { region: "Tillabéri", name: "Gothèye", lat: 13.9667, lng: 1.5667 },
+            { region: "Tillabéri", name: "Kollo", lat: 13.3000, lng: 2.3333 },
+            { region: "Tillabéri", name: "Ouallam", lat: 14.3178, lng: 2.0850 },
+            { region: "Tillabéri", name: "Say", lat: 13.1000, lng: 2.3500 },
+            { region: "Tillabéri", name: "Téra", lat: 14.0078, lng: 0.7533 },
+            { region: "Tillabéri", name: "Tillabéri", lat: 14.2071, lng: 1.4542 },
+            { region: "Tillabéri", name: "Torodi", lat: 13.1500, lng: 0.8167 },
+
+            // ZINDER (10)
+            { region: "Zinder", name: "Belbédji", lat: 14.5167, lng: 9.1833 },
+            { region: "Zinder", name: "Damagaram Takaya", lat: 13.9500, lng: 9.5167 },
+            { region: "Zinder", name: "Dungass", lat: 13.1000, lng: 9.0833 },
+            { region: "Zinder", name: "Gouré", lat: 13.9833, lng: 10.2667 },
+            { region: "Zinder", name: "Magaria", lat: 12.9983, lng: 8.9100 },
+            { region: "Zinder", name: "Matamèye", lat: 13.4631, lng: 8.4758 },
+            { region: "Zinder", name: "Mirriah", lat: 13.7075, lng: 8.9667 },
+            { region: "Zinder", name: "Tanout", lat: 14.9708, lng: 8.8878 },
+            { region: "Zinder", name: "Takeita", lat: 13.8833, lng: 8.6667 },
+            { region: "Zinder", name: "Tesker", lat: 17.2500, lng: 11.1667 },
+
+            // NIAMEY (1)
+            { region: "Niamey", name: "Niamey (CU)", lat: 13.5116, lng: 2.1254 }
         ];
 
-        var markersGroup = L.layerGroup().addTo(map);
+        var regionMarkersGroup = L.layerGroup().addTo(map);
+        var deptMarkersGroup = L.layerGroup();
+        var selectedRegion = null;
+        var selectedDepartment = null;
+        var selectedCommune = null;
+        var displayMode = 'value';
+        var mapDisplayMode = 'regions';
+        var nigerLayer = null;
 
-        // Gestion de l'affichage dynamique des marqueurs (Régions / Départements) selon le zoom
-        function updateMapMarkers() {
-            markersGroup.clearLayers();
-            var currentZoom = map.getZoom();
-
-            if (currentZoom < 7) {
-                regionsData.forEach(function(reg) {
-                    var marker = L.marker(reg.coords).bindPopup("<b>Région : " + reg.name + "</b><br>" + reg.depts + " Départements");
-                    markersGroup.addLayer(marker);
-                });
-            } else {
-                deptsData.forEach(function(dept) {
-                    var marker = L.marker(dept.coords).bindPopup("<b>Département : " + dept.name + "</b><br>Région : " + dept.region);
-                    markersGroup.addLayer(marker);
-                });
-            }
+        function normalizeName(value) {
+            return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]/g, '');
         }
 
-        map.on('zoomend', updateMapMarkers);
-        updateMapMarkers();
+        function findRegionCommunes(regionName) {
+            var key = Object.keys(window.communesParDepartement).find(function(name) {
+                return normalizeName(name) === normalizeName(regionName);
+            });
+            return key ? window.communesParDepartement[key] : {};
+        }
 
-        // Forcer le recalcul de la taille de la carte
-        setTimeout(function() {
-            map.invalidateSize();
-        }, 200);
-    });
-</script>
+        function findDepartmentCommunes(regionName, departmentName) {
+            var departments = findRegionCommunes(regionName);
+            var key = Object.keys(departments).find(function(name) {
+                return normalizeName(name) === normalizeName(departmentName);
+            });
+            return key ? departments[key] : [];
+        }
+        function addDetailedDemoIndicators(stats, scope) {
+            var seed=normalizeName(scope||'niger').split('').reduce(function(sum,char){return sum+char.charCodeAt(0);},0)%9-4;
+            stats.homelessRate=Math.max(0.2,Math.min(8,1.2+Math.abs(seed)*0.35));
+            stats.disabilityRate=Math.max(1,Math.min(12,3.2+seed*0.3));
+            [['Preschool','illiteracyPreschool',78],['Primary','illiteracyPrimary',58],['College','illiteracyCollege',39],['High','illiteracyHigh',24],['Higher','illiteracyHigher',11]].forEach(function(level){var all=Math.max(2,Math.min(98,level[2]+seed*0.65));stats[level[1]+'All']=all;stats[level[1]+'Girls']=Math.min(99,all+6);stats[level[1]+'Boys']=Math.max(1,all-6);});
+            return stats;
+        }
+        function getTerritoryStats(regionName, departmentName, communeName) {
+            var base=getRegionStats(regionName); if(!base) return null;
+            var stored=(window.rgphAreaStats||[]).find(function(row){return normalizeName(row.region_name)===normalizeName(regionName)&&normalizeName(row.department_name)===normalizeName(departmentName||'')&&(communeName?row.area_level==='commune'&&normalizeName(row.commune_name)===normalizeName(communeName):row.area_level==='department');});
+            if(stored){return addDetailedDemoIndicators({population:Number(stored.population),households:Number(stored.households),healthRate:Number(stored.health_rate),povertyRate:Number(stored.poverty_rate),economicRate:Number(stored.economic_rate),literacyRate:Number(stored.literacy_rate),languageShare:Number(stored.language_share),housingRate:Number(stored.housing_rate),establishments:Number(stored.establishments),_level:stored.area_level,_name:stored.commune_name||stored.department_name},[regionName,departmentName,communeName].filter(Boolean).join(' '));}
+            var departments=findRegionCommunes(regionName), names=Object.keys(departments).filter(function(name){return normalizeName(regionName)==='niamey'||normalizeName(name)!=='arrondissementscommunaux';});
+            var totalUnits=names.reduce(function(sum,name){return sum+Math.max(1,departments[name].length);},0)||1;
+            var deptUnits=departmentName?Math.max(1,(findDepartmentCommunes(regionName,departmentName)||[]).length):totalUnits;
+            var ratio=departmentName?(communeName?1/totalUnits:deptUnits/totalUnits):1;
+            var result={}; Object.keys(base).forEach(function(key){result[key]=base[key];});
+            ['population','households','establishments'].forEach(function(key){result[key]=Math.round(Number(base[key]||0)*ratio);});
+            var seed=(normalizeName(departmentName||regionName).split('').reduce(function(a,c){return a+c.charCodeAt(0);},0)+(communeName?normalizeName(communeName).length*7:0))%9-4;
+            ['healthRate','povertyRate','economicRate','literacyRate','languageShare','housingRate'].forEach(function(key){result[key]=Math.max(0,Math.min(100,Number(base[key]||0)+seed));});
+            result._level=communeName?'commune':departmentName?'department':'region'; result._name=communeName||departmentName||regionName;
+            return addDetailedDemoIndicators(result,[regionName,departmentName,communeName].filter(Boolean).join(' '));
+        }
+        function displayedMetric(metric,stats) {
+            var definition=metricDefinitions[metric], value=Number(stats[definition.field]||0);
+            if(definition.kind==='percent'){if(displayMode==='percent')return value.toLocaleString('fr-FR',{maximumFractionDigits:1})+' %';return new Intl.NumberFormat('fr-FR',{notation:'compact',maximumFractionDigits:1}).format(Math.round(Number(stats.population||0)*value/100));}
+            if(displayMode==='value')return formatMetric(metric,stats);
+            var national=metric==='population'?populationTotal():metric==='households'?householdsTotal():Object.values(window.rgphStats).reduce(function(sum,row){return sum+Number(row[definition.field]||0);},0);
+            return (national?value/national*100:0).toLocaleString('fr-FR',{maximumFractionDigits:1})+' %';
+        }
+        function syncRegionList() {
+            document.querySelectorAll('#region-list button').forEach(function(button){button.classList.toggle('selected',selectedRegion&&normalizeName(button.dataset.region)===normalizeName(selectedRegion));});
+        }
+        function renderRegionList() {
+            var list=document.getElementById('region-list'); list.replaceChildren();
+            regionsData.forEach(function(region){var button=document.createElement('button');button.type='button';button.dataset.region=region.name;button.textContent=region.name;button.addEventListener('click',function(){selectedRegion=region.name;selectedDepartment=null;selectedCommune=null;var data=findRegionCommunes(region.name);var departments=Object.keys(data);renderDetails('Région de '+region.name,departments.length+' départements','Choisissez un département pour voir ses communes.',departments,'Départements');syncRegionList();updateMarkers();});list.appendChild(button);});
+            syncRegionList();
+        }
+
+        function renderDetails(title, badge, description, items, itemLabel) {
+            var titleNode = document.getElementById('selected-region-name');
+            var badgeNode = document.getElementById('selected-region-badge');
+            var details = document.getElementById('region-details');
+            titleNode.textContent = title;
+            badgeNode.textContent = badge;
+            details.replaceChildren();
+
+            var intro = document.createElement('p');
+            intro.className = 'text-muted mb-2';
+            intro.textContent = description;
+            details.appendChild(intro);
+
+            if (items.length) {
+                var heading = document.createElement('strong');
+                heading.textContent = itemLabel;
+                details.appendChild(heading);
+                var list = document.createElement('ul');
+                list.className = 'list-unstyled mt-1 mb-2';
+                items.forEach(function(item) {
+                    var row = document.createElement('li');
+                    row.className = 'py-1 border-bottom'+(selectedCommune&&normalizeName(selectedCommune)===normalizeName(item)?' selected-commune':'');
+                    var action=document.createElement('button');action.type='button';action.className='territory-item';action.textContent=item;
+                    action.addEventListener('click',function(){if(itemLabel==='Départements'){selectedDepartment=item;selectedCommune=null;var communes=findDepartmentCommunes(selectedRegion,item);renderDetails('Département de '+item,'Région de '+selectedRegion,communes.length+' communes — choisissez une commune pour ses indicateurs.',communes,'Communes');}else if(itemLabel==='Communes'){selectedCommune=item;var allCommunes=findDepartmentCommunes(selectedRegion,selectedDepartment);renderDetails('Commune de '+item,'Département de '+(selectedDepartment||'Niamey'),'Commune sélectionnée. La liste complète reste affichée.',allCommunes,'Communes');}});
+                    row.appendChild(action);
+                    list.appendChild(row);
+                });
+                details.appendChild(list);
+            }
+            if(selectedRegion) {
+                var area=getTerritoryStats(selectedRegion,selectedDepartment,selectedCommune);
+                if(area){var statsBox=document.createElement('div');statsBox.className='area-stat-grid';[['Population','population'],['M\u00e9nages','households'],['Sant\u00e9','healthRate'],['Handicap','disabilityRate'],['Sans-abri','homelessRate'],['Pauvret\u00e9','povertyRate'],['Activit\u00e9 \u00e9conomique','economicRate'],['Alphab\u00e9tisation','literacyRate'],['Pr\u00e9scolaire - Ensemble','illiteracyPreschoolAll'],['Pr\u00e9scolaire - Filles','illiteracyPreschoolGirls'],['Pr\u00e9scolaire - Gar\u00e7ons','illiteracyPreschoolBoys'],['Primaire - Ensemble','illiteracyPrimaryAll'],['Primaire - Filles','illiteracyPrimaryGirls'],['Primaire - Gar\u00e7ons','illiteracyPrimaryBoys'],['Coll\u00e8ge - Ensemble','illiteracyCollegeAll'],['Coll\u00e8ge - Filles','illiteracyCollegeGirls'],['Coll\u00e8ge - Gar\u00e7ons','illiteracyCollegeBoys'],['Lyc\u00e9e - Ensemble','illiteracyHighAll'],['Lyc\u00e9e - Filles','illiteracyHighGirls'],['Lyc\u00e9e - Gar\u00e7ons','illiteracyHighBoys'],['Sup\u00e9rieur - Ensemble','illiteracyHigherAll'],['Sup\u00e9rieur - Filles','illiteracyHigherGirls'],['Sup\u00e9rieur - Gar\u00e7ons','illiteracyHigherBoys'],['Langue dominante','languageShare'],['Logement \u00e9quip\u00e9','housingRate'],['\u00c9tablissements','establishments']].forEach(function(pair){var cell=document.createElement('div');var value=displayedMetric(pair[1],area);cell.innerHTML='<span>'+pair[0]+'</span><strong></strong>';cell.querySelector('strong').textContent=value;statsBox.appendChild(cell);});details.appendChild(statsBox);var note=document.createElement('small');note.className='sidebar-hint';note.textContent='Répartition indicative calculée à partir des totaux régionaux.';details.appendChild(note);}
+            }
+
+            var back = document.createElement('button');
+            back.type = 'button';
+            back.className = 'btn btn-sm btn-outline-success mt-1';
+            back.textContent = 'Vue nationale';
+            back.addEventListener('click', function() {
+                selectedRegion = null; selectedDepartment=null; selectedCommune=null;
+                map.setView([17.2, 8.0], 6);
+                renderDetails('Vue Nationale', 'République du Niger (63 Départements)', 'Sélectionnez une région sur la carte.', [], '');
+                updateMarkers();
+            });
+            details.appendChild(back);
+            syncRegionList();
+        }
+
+        // 2. Chargement du GeoJSON et masquage des pays voisins
+        fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries/NER.geo.json')
+            .then(response => response.json())
+            .then(data => {
+                var worldCoords = [[90, -180], [90, 180], [-90, 180], [-90, -180]];
+                var feature = data.features[0];
+                var coordinates = feature.geometry.coordinates;
+                var holes = [];
+
+                if (feature.geometry.type === "Polygon") {
+                    holes = coordinates.map(ring => ring.map(coord => [coord[1], coord[0]]));
+                } else if (feature.geometry.type === "MultiPolygon") {
+                    coordinates.forEach(poly => {
+                        poly.forEach(ring => {
+                            holes.push(ring.map(coord => [coord[1], coord[0]]));
+                        });
+                    });
+                }
+
+                // Masque blanc extérieur
+                L.polygon([worldCoords, ...holes], {
+                    color: '#ffffff',
+                    fillColor: '#ffffff',
+                    fillOpacity: 1.0,
+                    weight: 0,
+                    interactive: false
+                }).addTo(map);
+
+                // Frontière verte du Niger
+                nigerLayer = L.geoJSON(data, {
+                    style: {
+                        color: '#27AE60',
+                        weight: 3,
+                        fillColor: '#F39C12',
+                        fillOpacity: 0.1
+                    }
+                }).addTo(map);
+
+                map.fitBounds(nigerLayer.getBounds(), { padding: [20, 20], maxZoom: 6 });
+
+                // Affichage initial des régions
+                updateMarkers();
+            })
+            .catch(err => console.log('Erreur chargement frontières:', err));
+
+        var selectedMetric = 'population';
+        var metricDefinitions = {
+            population: {field:'population', label:'Population', kind:'millions'},
+            households: {field:'households', label:'Ménages', kind:'millions'},
+            healthRate: {field:'healthRate', label:'Accès aux soins (test)', kind:'percent'},
+            disabilityRate:{field:'disabilityRate',label:'Taux de handicap',kind:'percent'}, homelessRate:{field:'homelessRate',label:'Population sans abri',kind:'percent'},
+            povertyRate: {field:'povertyRate', label:'Pauvreté multidimensionnelle (test)', kind:'percent'},
+            economicRate: {field:'economicRate', label:'Activité économique (test)', kind:'percent'},
+            literacyRate: {field:'literacyRate', label:'Alphabétisation (test)', kind:'percent'},
+            illiteracyPreschoolAll:{field:'illiteracyPreschoolAll',label:'Analphabetisme prescolaire - ensemble',kind:'percent'},illiteracyPreschoolGirls:{field:'illiteracyPreschoolGirls',label:'Analphabetisme prescolaire - filles',kind:'percent'},illiteracyPreschoolBoys:{field:'illiteracyPreschoolBoys',label:'Analphabetisme prescolaire - gar\u00e7ons',kind:'percent'},
+            illiteracyPrimaryAll:{field:'illiteracyPrimaryAll',label:'Analphabetisme primaire - ensemble',kind:'percent'},illiteracyPrimaryGirls:{field:'illiteracyPrimaryGirls',label:'Analphabetisme primaire - filles',kind:'percent'},illiteracyPrimaryBoys:{field:'illiteracyPrimaryBoys',label:'Analphabetisme primaire - gar\u00e7ons',kind:'percent'},
+            illiteracyCollegeAll:{field:'illiteracyCollegeAll',label:'Analphabetisme college - ensemble',kind:'percent'},illiteracyCollegeGirls:{field:'illiteracyCollegeGirls',label:'Analphabetisme college - filles',kind:'percent'},illiteracyCollegeBoys:{field:'illiteracyCollegeBoys',label:'Analphabetisme college - gar\u00e7ons',kind:'percent'},
+            illiteracyHighAll:{field:'illiteracyHighAll',label:'Analphabetisme lycee - ensemble',kind:'percent'},illiteracyHighGirls:{field:'illiteracyHighGirls',label:'Analphabetisme lycee - filles',kind:'percent'},illiteracyHighBoys:{field:'illiteracyHighBoys',label:'Analphabetisme lycee - gar\u00e7ons',kind:'percent'},
+            illiteracyHigherAll:{field:'illiteracyHigherAll',label:'Analphabetisme superieur - ensemble',kind:'percent'},illiteracyHigherGirls:{field:'illiteracyHigherGirls',label:'Analphabetisme superieur - filles',kind:'percent'},illiteracyHigherBoys:{field:'illiteracyHigherBoys',label:'Analphabetisme superieur - gar\u00e7ons',kind:'percent'},
+            languageShare: {field:'languageShare', label:'Langue maternelle dominante (test)', kind:'percent'},
+            housingRate: {field:'housingRate', label:'Accès à un logement équipé (test)', kind:'percent'},
+            establishments: {field:'establishments', label:'Établissements économiques estimés (test)', kind:'number'}
+        };
+        function getRegionStats(regionName) {
+            var key=Object.keys(window.rgphStats).find(function(name){return normalizeName(name)===normalizeName(regionName);});
+            return key ? addDetailedDemoIndicators(window.rgphStats[key],key) : null;
+        }
+        function formatMetric(metric, stats) {
+            var definition=metricDefinitions[metric], value=Number(stats[definition.field]||0);
+            if(definition.kind==='millions') return (value/1000000).toLocaleString('fr-FR',{minimumFractionDigits:1,maximumFractionDigits:1})+' M';
+            if(definition.kind==='percent') return value.toLocaleString('fr-FR',{maximumFractionDigits:1})+' %';
+            return value.toLocaleString('fr-FR');
+        }
+        function populationTotal() { return Object.values(window.rgphStats).reduce(function(total,item){return total+Number(item.population||0);},0); }
+        function householdsTotal() { return Object.values(window.rgphStats).reduce(function(total,item){return total+Number(item.households||0);},0); }
+        function weightedRate(field) {
+            var population=populationTotal();
+            return Object.values(window.rgphStats).reduce(function(total,item){return total+Number(item[field]||0)*Number(item.population||0);},0)/population;
+        }
+        function metricColor(metric,value) {
+            if(metric==='population'||metric==='households'||metric==='establishments') return '#f28c00';
+            if(metric==='povertyRate') return value>=60?'#c94e4e':value>=45?'#e7a14b':'#078347';
+            return value>=65?'#078347':value>=50?'#65a66e':value>=38?'#e7a14b':'#d56755';
+        }
+        function addRegionMarkers() {
+            regionsData.forEach(function(r, regionIndex) {
+                var stats=getRegionStats(r.name); if(!stats) return;
+                var definition=metricDefinitions[selectedMetric], value=Number(stats[definition.field]||0);
+                var isCount=definition.kind!=='percent';var total=isCount?(selectedMetric==='population'?populationTotal():selectedMetric==='households'?householdsTotal():Object.values(window.rgphStats).reduce(function(sum,row){return sum+Number(row[definition.field]||0);},0)):100;var share=isCount?value/Math.max(1,total):value/100;var radius=mapDisplayMode==='bubbles'?Math.max(6,Math.min(23,6+Math.sqrt(Math.max(0,share))*34)):Math.max(5,Math.min(9,6+Math.sqrt(Math.max(0,share))*5));
+                var marker=L.circleMarker([r.lat,r.lng],{radius:radius,color:'#fff',weight:2,fillColor:metricColor(selectedMetric,value),fillOpacity:.95});
+                var tooltipSide=r.name==='Dosso'?'top':r.name==='Niamey'?'bottom':['top','right','left','bottom'][regionIndex%4];
+                var tooltipOffset=r.name==='Dosso'?[-18,-15]:r.name==='Niamey'?[20,14]:[0,-7];
+                marker.bindTooltip('<strong>'+r.name+'</strong><br>'+displayedMetric(selectedMetric,stats),{permanent:true,direction:tooltipSide,offset:tooltipOffset,className:'region-tooltip',opacity:.96});
+                marker.bindPopup('<b>'+r.name+'</b><hr><b>Population :</b> '+formatMetric('population',stats)+' habitants<br><b>Ménages :</b> '+formatMetric('households',stats)+'<br><b>Santé :</b> '+formatMetric('healthRate',stats)+'<br><b>Handicap :</b> '+displayedMetric('disabilityRate',stats)+'<br><b>Sans-abri :</b> '+displayedMetric('homelessRate',stats)+'<br><b>Pauvreté :</b> '+formatMetric('povertyRate',stats)+'<br><b>Activité économique :</b> '+formatMetric('economicRate',stats)+'<br><b>Alphabétisation :</b> '+formatMetric('literacyRate',stats)+'<br><small>Valeurs de démonstration</small>');
+                marker.on('click',function(){
+                    selectedRegion=r.name; selectedDepartment=null; selectedCommune=null;
+                    var regionDepartments=findRegionCommunes(r.name), isNiamey=normalizeName(r.name)==='niamey';
+                    var subdivisions=isNiamey?(regionDepartments['Arrondissements communaux']||[]):Object.keys(regionDepartments);
+                    var description='Santé '+formatMetric('healthRate',stats)+' · pauvreté '+formatMetric('povertyRate',stats)+' · activité '+formatMetric('economicRate',stats)+' · alphabétisation '+formatMetric('literacyRate',stats)+' (simulation).';
+                    renderDetails('Région de '+r.name,formatMetric('population',stats)+' habitants · '+formatMetric('households',stats)+' ménages',description,subdivisions,isNiamey?'Arrondissements':'Départements');
+                    if(nigerLayer) map.fitBounds(nigerLayer.getBounds(),{padding:[20,20],maxZoom:6}); updateMarkers(); showRegionModal(r.name);
+                });
+                regionMarkersGroup.addLayer(marker);
+            });
+        }        function updateMarkers() {
+            regionMarkersGroup.clearLayers();
+            deptMarkersGroup.clearLayers();
+            var currentZoom = map.getZoom();
+            if (currentZoom < 8 || selectedRegion) addRegionMarkers();
+            if (currentZoom < 8 && !selectedRegion) return;
+
+            departementsData.filter(function(d) {
+                return normalizeName(d.region) !== 'niamey' && (!selectedRegion || normalizeName(d.region) === normalizeName(selectedRegion));
+            }).forEach(function(d) {
+                var communes = findDepartmentCommunes(d.region, d.name);
+                var highlighted = selectedDepartment && normalizeName(selectedDepartment) === normalizeName(d.name);
+                var deptIcon = L.divIcon({ className: 'custom-dept-marker', html: '<span class="dept-marker-label ' + (highlighted ? 'selected-dept-label' : '') + '">' + d.name + '</span>', iconSize: null, iconAnchor: [0, 8] });
+                var marker = L.marker([d.lat, d.lng], { icon: deptIcon });
+                marker.bindPopup('<b>Département de ' + d.name + '</b><br>Région : ' + d.region + '<br><small>' + communes.length + ' communes — liste dans le panneau</small>');
+                marker.on('click', function() {
+                    selectedRegion=d.region; selectedDepartment=d.name; selectedCommune=null;
+                    renderDetails('Département de ' + d.name, 'Région de ' + d.region, communes.length + ' communes dans ce département :', communes, 'Communes');
+                });
+                deptMarkersGroup.addLayer(marker);
+            });
+            deptMarkersGroup.addTo(map);
+        }
+
+        document.getElementById('national-view').addEventListener('click', function() {
+            selectedRegion = null; selectedDepartment=null; selectedCommune=null;
+            if (nigerLayer) map.fitBounds(nigerLayer.getBounds(), { padding: [20, 20], maxZoom: 6 });
+            renderDetails('Vue nationale', 'République du Niger · 8 régions', 'Cliquez sur une région pour afficher ses départements.', [], '');
+            updateMarkers();
+        });
+
+        document.getElementById('indicator-search').addEventListener('input', function(event) {
+            var query = normalizeName(event.target.value.trim());
+            document.querySelectorAll('.theme').forEach(function(theme) {
+                var matches = 0;
+                theme.querySelectorAll('.indicator-item').forEach(function(item) {
+                    var visible = !query || normalizeName(item.textContent).includes(query);
+                    item.hidden = !visible;
+                    if (visible) matches++;
+                });
+                theme.hidden = !!query && matches === 0;
+                if (query && matches) theme.open = true;
+            });
+        });
+        // Écouteur d'événement sur le changement de zoom de la carte
+        var territoryIndex = [];
+        var territoryByLabel = Object.create(null);
+        function addTerritory(label, record) {
+            record.label=label;
+            territoryIndex.push(record);
+            territoryByLabel[label] = record;
+        }
+        regionsData.forEach(function(r) { addTerritory('Région — ' + r.name, {type:'region',name:r.name,region:r.name}); });
+        departementsData.forEach(function(d) { addTerritory('Département — ' + d.name + ' (' + d.region + ')', {type:'department',name:d.name,region:d.region}); });
+        Object.keys(window.communesParDepartement).forEach(function(region) {
+            Object.keys(window.communesParDepartement[region]).forEach(function(department) {
+                window.communesParDepartement[region][department].forEach(function(commune) {
+                    addTerritory('Commune — ' + commune + ' (' + department + ', ' + region + ')', {type:'commune',name:commune,department:department,region:region});
+                });
+            });
+        });
+        function locateTerritory(value) {
+            var record = territoryByLabel[value];
+            if (!record) { var query=normalizeName(value); record=territoryIndex.find(function(item){return normalizeName(item.name)===query;}); }
+            if (!record) { showNotice('Aucun territoire trouvé. Choisissez une proposition de la liste.'); return; }
+            selectedRegion=record.region; selectedDepartment=record.type==='region'?null:(record.department||record.name); selectedCommune=record.type==='commune'?record.name:null;
+            if(record.type==='region') { var subs=Object.keys(findRegionCommunes(record.region)); renderDetails('Région de '+record.region,subs.length+' départements','Départements de la région :',subs,'Départements'); }
+            else { var communes=findDepartmentCommunes(record.region,record.department||record.name); if(record.type==='commune') renderDetails('Commune de '+record.name,'Département de '+record.department,'Commune sélectionnée. La liste complète reste affichée.',communes,'Communes'); else renderDetails('Département de '+record.name,'Région de '+record.region,communes.length+' communes dans ce département :',communes,'Communes'); }
+            var regionPoint=regionsData.find(function(item){return normalizeName(item.name)===normalizeName(record.region);});
+            var departmentPoint=departementsData.find(function(item){return normalizeName(item.region)===normalizeName(record.region)&&normalizeName(item.name)===normalizeName(record.department||record.name);});
+            if(record.type==='region'&&regionPoint)map.setView([regionPoint.lat,regionPoint.lng],7);
+            else if(departmentPoint)map.setView([departmentPoint.lat,departmentPoint.lng],record.type==='commune'?10:9);
+            else if(regionPoint)map.setView([regionPoint.lat,regionPoint.lng],7);
+            territorySuggestions.hidden=true; updateMarkers();
+        }
+        var territorySearch=document.getElementById('territory-search');
+        var territorySuggestions=document.getElementById('territory-suggestions');
+        function renderTerritorySuggestions(query) {
+            var normalized=normalizeName(query), matches=territoryIndex.filter(function(item){return !normalized||normalizeName([item.name,item.department||'',item.region||''].join(' ')).includes(normalized);});
+            matches.sort(function(a,b){var aStarts=normalizeName(a.name).startsWith(normalized),bStarts=normalizeName(b.name).startsWith(normalized);return Number(bStarts)-Number(aStarts)||a.label.localeCompare(b.label,'fr');});
+            territorySuggestions.replaceChildren();
+            if(!matches.length){var empty=document.createElement('div');empty.className='no-result';empty.textContent='Aucun territoire trouvé';territorySuggestions.appendChild(empty);}
+            matches.forEach(function(record){var option=document.createElement('button');option.type='button';option.setAttribute('role','option');option.textContent=record.label;option.addEventListener('mousedown',function(event){event.preventDefault();});option.addEventListener('click',function(){territorySearch.value=record.label;territorySuggestions.hidden=true;locateTerritory(record.label);});territorySuggestions.appendChild(option);});
+            territorySuggestions.hidden=false;
+        }
+        territorySearch.addEventListener('input',function(){renderTerritorySuggestions(territorySearch.value.trim());});
+        territorySearch.addEventListener('focus',function(){renderTerritorySuggestions(territorySearch.value.trim());});
+        territorySearch.addEventListener('keydown',function(e){if(e.key==='Escape'){territorySuggestions.hidden=true;}else if(e.key==='Enter'){e.preventDefault();var first=territorySuggestions.querySelector('button[role="option"]');if(first)first.click();else locateTerritory(territorySearch.value.trim());}else if(e.key==='ArrowDown'){var first=territorySuggestions.querySelector('button[role="option"]');if(first)first.focus();}});
+        territorySearch.addEventListener('blur',function(){window.setTimeout(function(){territorySuggestions.hidden=true;},150);});
+        function showNotice(message){var n=document.getElementById('action-notice');n.textContent=message;n.classList.add('visible');window.clearTimeout(showNotice.timeout);showNotice.timeout=window.setTimeout(function(){n.classList.remove('visible');},3500);}
+        function escapeHtml(value){return String(value).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+        function getExportRows(){var rows=[];Object.keys(window.communesParDepartement).forEach(function(region){Object.keys(window.communesParDepartement[region]).forEach(function(department){var communes=window.communesParDepartement[region][department];if(normalizeName(department)==='arrondissementscommunaux'){communes.forEach(function(c){rows.push([region,'Niamey',c]);});}else{communes.forEach(function(c){rows.push([region,department,c]);});}});});return rows;}
+        function downloadReport(format) {
+            var allRows=getExportRows(), rows=allRows.filter(function(row){return (!selectedRegion||normalizeName(row[0])===normalizeName(selectedRegion))&&(!selectedDepartment||normalizeName(selectedDepartment)==='arrondissementscommunaux'||normalizeName(row[1])===normalizeName(selectedDepartment))&&(!selectedCommune||normalizeName(row[2])===normalizeName(selectedCommune));});
+            var columns=['Région','Département','Commune','Population estimée','Ménages estimés','Accès aux soins (%)','Pauvreté (%)','Activité économique (%)','Alphabétisation (%)','Langue dominante (%)','Logement équipé (%)','Établissements estimés'];
+            var metrics=['population','households','healthRate','povertyRate','economicRate','literacyRate','languageShare','housingRate','establishments'];
+            var summaryStats=selectedRegion?getTerritoryStats(selectedRegion,selectedDepartment,selectedCommune):null;
+            var summaryRow=summaryStats?'<tr><td>'+escapeHtml(selectedRegion)+'</td><td>'+escapeHtml(selectedDepartment||'—')+'</td><td>'+escapeHtml(selectedCommune||'TOTAL')+'</td>'+metrics.map(function(key){return '<td>'+escapeHtml(formatMetric(key,summaryStats))+'</td>';}).join('')+'</tr>':'';
+            if(selectedCommune) rows=[];
+            var body=summaryRow+rows.map(function(row){var stats=getTerritoryStats(row[0],row[1],row[2]);return '<tr>'+row.map(escapeHtml).concat(metrics.map(function(key){return escapeHtml(formatMetric(key,stats));})).map(function(value){return '<td>'+value+'</td>';}).join('')+'</tr>';}).join('');
+            var title=selectedCommune||selectedDepartment||selectedRegion||'Niger — toutes les régions';
+            var html='<!doctype html><html><head><meta charset="utf-8"><style>body{font-family:Arial}h1{color:#078347}table{border-collapse:collapse;width:100%}th,td{border:1px solid #bbb;padding:6px;text-align:left}th{background:#078347;color:white}@media(max-width:820px){.map-actions .map-mode-button{width:60px!important;height:32px}.map-actions .tool-language{height:32px}}</style></head><body><h1>RGPH Niger 2026 — '+escapeHtml(title)+'</h1><p>Estimations de démonstration, à remplacer par les données officielles.</p><table><thead><tr>'+columns.map(function(value){return '<th>'+escapeHtml(value)+'</th>';}).join('')+'</tr></thead><tbody>'+body+'</tbody></table></body></html>';
+            var excel=format==='excel', blob=new Blob([String.fromCharCode(0xFEFF),html],{type:excel?'application/vnd.ms-excel;charset=utf-8':'application/msword;charset=utf-8'});
+            var link=document.createElement('a'); link.href=URL.createObjectURL(blob); link.download='rgph-'+normalizeName(title)+'-2026.'+(excel?'xls':'doc'); document.body.appendChild(link); link.click(); link.remove();
+            window.setTimeout(function(){URL.revokeObjectURL(link.href);},1000);
+            showNotice('Export '+(excel?'Excel':'Word')+' créé pour : '+title+'.');
+        }
+        function renderTerritoryDataTable(panel,initialLevel) {
+            var level=initialLevel, tabs=document.createElement('div');tabs.className='table-level-tabs';[['regions','R\u00e9gions'],['departments','Departements'],['communes','Communes']].forEach(function(item){var b=document.createElement('button');b.type='button';b.textContent=item[1];b.classList.toggle('active',item[0]===level);b.addEventListener('click',function(){level=item[0];tabs.querySelectorAll('button').forEach(function(x){x.classList.toggle('active',x===b);});render();});tabs.appendChild(b);});panel.appendChild(tabs);
+            var controls=document.createElement('div');controls.className='table-controls';var search=document.createElement('input');search.type='search';search.placeholder='Rechercher dans le tableau...';var region=document.createElement('select');region.innerHTML='<option value="">Toutes les r\u00e9gions</option>'+regionsData.map(function(r){return '<option>'+escapeHtml(r.name)+'</option>';}).join('');var exp=document.createElement('button');exp.type='button';exp.textContent='Exporter Excel';exp.addEventListener('click',function(){downloadReport('excel');});controls.append(search,region,exp);panel.appendChild(controls);var wrap=document.createElement('div');wrap.className='database-table-wrap';panel.appendChild(wrap);
+            function render(){wrap.replaceChildren();var table=document.createElement('table'),head=table.createTHead().insertRow(),body=table.createTBody(),rows=[];
+                if(level==='regions')rows=Object.keys(window.rgphStats).map(function(name){var a=window.rgphStats[name];return {name:name,region:name,stats:a,values:[name,a.population,a.households,a.healthRate,a.povertyRate,a.economicRate,a.literacyRate]};});
+                else (window.rgphAreaStats||[]).filter(function(a){return a.area_level===(level==='departments'?'department':'commune');}).forEach(function(a){var stats={population:Number(a.population),households:Number(a.households),healthRate:Number(a.health_rate),povertyRate:Number(a.poverty_rate),economicRate:Number(a.economic_rate),literacyRate:Number(a.literacy_rate)};rows.push({name:level==='communes'?a.commune_name:a.department_name,department:a.department_name,commune:a.commune_name,region:a.region_name,stats:stats,values:[level==='communes'?a.commune_name:a.department_name,a.department_name,a.region_name,a.population,a.households,a.health_rate,a.poverty_rate,a.economic_rate,a.literacy_rate]});});
+                var cols=level==='regions'?['Region','Population','Menages','Sante (%)','Pauvrete (%)','Activite (%)','Alphab\u00e9tisation (%)']:['Commune/Departement','Departement','Region','Population','Menages','Sante (%)','Pauvrete (%)','Activite (%)','Alphab\u00e9tisation (%)'];cols.forEach(function(c){var th=document.createElement('th');th.textContent=c;head.appendChild(th);});
+                rows.filter(function(r){return (!region.value||normalizeName(r.region)===normalizeName(region.value))&&normalizeName(r.values.join(' ')).includes(normalizeName(search.value));}).forEach(function(r){var tr=body.insertRow();r.values.forEach(function(v){tr.insertCell().textContent=typeof v==='number'?Number(v).toLocaleString('fr-FR',{maximumFractionDigits:1}):String(v);});tr.tabIndex=0;tr.addEventListener('click',function(){if(level==='regions'){selectedRegion=r.region;selectedDepartment=null;selectedCommune=null;renderDetails('Region de '+r.region,formatMetric('population',r.stats)+' habitants - '+formatMetric('households',r.stats)+' menages','Indicateurs de demonstration.',Object.keys(findRegionCommunes(r.region)),'Departements');showRegionModal(r.region);updateMarkers();}else locateTerritory(level==='communes'?'Commune - '+r.commune+' ('+r.department+', '+r.region+')':'Departement - '+r.department+' ('+r.region+')');});});wrap.appendChild(table);}
+            search.addEventListener('input',render);region.addEventListener('change',render);render();
+        }
+        function showRegionModal(name){var stats=getRegionStats(name);if(!stats)return;var modal=document.getElementById('region-data-modal'),content=document.getElementById('region-modal-content');document.getElementById('region-modal-title').textContent='R\u00e9gion '+name;content.replaceChildren();var title=document.createElement('h3');title.textContent='RGPH 2026 - donn\u00e9es de d\u00e9monstration';content.appendChild(title);var note=document.createElement('p');note.className='region-modal-note';note.textContent='Estimations fictives, \u00e0 remplacer par les donn\u00e9es officielles.';content.appendChild(note);var groups=[['D\u00e9mographie',[['Population totale','population'],['M\u00e9nages','households']]],['Sant\u00e9',[['Acc\u00e8s aux soins (%)','healthRate'],['Handicap (%)','disabilityRate'],['Population sans-abri (%)','homelessRate']]],['Analphab\u00e9tisme par niveau scolaire',[['Taux global (%)','literacyRate']]]];[['Pr\u00e9scolaire','illiteracyPreschool'],['Primaire','illiteracyPrimary'],['Coll\u00e8ge','illiteracyCollege'],['Lyc\u00e9e','illiteracyHigh'],['Sup\u00e9rieur','illiteracyHigher']].forEach(function(level){groups[2][1].push([level[0]+' - ensemble (%)',level[1]+'All'],[level[0]+' - filles (%)',level[1]+'Girls'],[level[0]+' - gar\u00e7ons (%)',level[1]+'Boys']);});groups.push(['Autres indicateurs',[['Pauvret\u00e9 (%)','povertyRate'],['Activit\u00e9 \u00e9conomique (%)','economicRate'],['Langue dominante (%)','languageShare'],['Logement \u00e9quip\u00e9 (%)','housingRate'],['\u00c9tablissements','establishments']]]);groups.forEach(function(g){var h=document.createElement('h3');h.textContent=g[0];content.appendChild(h);var t=document.createElement('table'),b=t.createTBody();g[1].forEach(function(i){var row=b.insertRow();row.insertCell().textContent=i[0];row.insertCell().textContent=displayedMetric(i[1],stats);});content.appendChild(t);});modal.hidden=false;}
+
+        var uiTranslations={
+            fr:{nav:['Cartes th\u00e9matiques','Chiffres cl\u00e9s 2026','Tableaux RGPH 2026','CEE 2026','Concepts et d\u00e9finitions'],heading:'Indicateurs statistiques',search:'Rechercher un indicateur...',map:'Carte administrative',regionSearch:'R\u00e9gion, d\u00e9partement, commune...',display:'Affichage',numbers:'Chiffres',percent:'Pourcentages',export:'Exporter la s\u00e9lection',national:'Vue nationale',regions:'R\u00e9gions',departments:'D\u00e9partements',communes:'Communes',groups:['Recensement g\u00e9n\u00e9ral de la population et de l\u2019habitat','D\u00e9mographie','Sant\u00e9','\u00c9ducation et alphab\u00e9tisation','Langue maternelle','Activit\u00e9 \u00e9conomique','Conditions d\u2019habitat','Pauvret\u00e9 multidimensionnelle']},
+            en:{nav:['Thematic maps','Key figures 2026','RGPH tables 2026','CEE 2026','Concepts and definitions'],heading:'Statistical indicators',search:'Search indicators...',map:'Administrative map',regionSearch:'Region, department, commune...',display:'Display',numbers:'Counts',percent:'Percentages',export:'Export selection',national:'National view',regions:'Regions',departments:'Departments',communes:'Communes',groups:['General population and housing census','Demographics','Health','Education and literacy','Mother tongue','Economic activity','Housing conditions','Multidimensional poverty']},
+            es:{nav:['Mapas tematicos','Cifras clave 2026','Tablas RGPH 2026','CEE 2026','Conceptos y definiciones'],heading:'Indicadores estadisticos',search:'Buscar indicadores...',map:'Mapa administrativo',regionSearch:'Region, departamento, comuna...',display:'Visualizacion',numbers:'Cifras',percent:'Porcentajes',export:'Exportar seleccion',national:'Vista nacional',regions:'Regiones',departments:'Departamentos',communes:'Comunas',groups:['Censo general de poblacion y vivienda','Demografia','Salud','Educacion y alfabetizacion','Lengua materna','Actividad economica','Vivienda','Pobreza multidimensional']},
+            ar:{nav:['\u0627\u0644\u062e\u0631\u0627\u0626\u0637 \u0627\u0644\u0645\u0648\u0636\u0648\u0639\u064a\u0629','\u0627\u0644\u0623\u0631\u0642\u0627\u0645 \u0627\u0644\u0631\u0626\u064a\u0633\u064a\u0629 2026','\u062c\u062f\u0627\u0648\u0644 RGPH 2026','CEE 2026','\u0627\u0644\u0645\u0641\u0627\u0647\u064a\u0645 \u0648\u0627\u0644\u062a\u0639\u0627\u0631\u064a\u0641','\u0642\u0627\u0639\u062f\u0629 \u0627\u0644\u0628\u064a\u0627\u0646\u0627\u062a'],heading:'\u0627\u0644\u0645\u0624\u0634\u0631\u0627\u062a \u0627\u0644\u0625\u062d\u0635\u0627\u0626\u064a\u0629',search:'\u0627\u0628\u062d\u062b \u0639\u0646 \u0645\u0624\u0634\u0631...',map:'\u0627\u0644\u062e\u0631\u064a\u0637\u0629 \u0627\u0644\u0625\u062f\u0627\u0631\u064a\u0629',regionSearch:'\u0627\u0644\u0645\u0646\u0637\u0642\u0629\u060c \u0627\u0644\u0645\u0642\u0627\u0637\u0639\u0629\u060c \u0627\u0644\u0628\u0644\u062f\u064a\u0629...',display:'\u0627\u0644\u0639\u0631\u0636',numbers:'\u0623\u0631\u0642\u0627\u0645',percent:'\u0646\u0633\u0628 \u0645\u0626\u0648\u064a\u0629',export:'\u062a\u0635\u062f\u064a\u0631 \u0627\u0644\u0627\u062e\u062a\u064a\u0627\u0631',national:'\u0627\u0644\u0639\u0631\u0636 \u0627\u0644\u0648\u0637\u0646\u064a',regions:'\u0627\u0644\u0645\u0646\u0627\u0637\u0642',departments:'\u0627\u0644\u0645\u0642\u0627\u0637\u0639\u0627\u062a',communes:'\u0627\u0644\u0628\u0644\u062f\u064a\u0627\u062a',groups:['\u0627\u0644\u062a\u0639\u062f\u0627\u062f \u0627\u0644\u0639\u0627\u0645 \u0644\u0644\u0633\u0643\u0627\u0646 \u0648\u0627\u0644\u0633\u0643\u0646','\u0627\u0644\u062f\u064a\u0645\u0648\u063a\u0631\u0627\u0641\u064a\u0627','\u0627\u0644\u0635\u062d\u0629','\u0627\u0644\u062a\u0639\u0644\u064a\u0645 \u0648\u0645\u062d\u0648 \u0627\u0644\u0623\u0645\u064a\u0629','\u0627\u0644\u0644\u063a\u0629 \u0627\u0644\u0623\u0645','\u0627\u0644\u0646\u0634\u0627\u0637 \u0627\u0644\u0627\u0642\u062a\u0635\u0627\u062f\u064a','\u0638\u0631\u0648\u0641 \u0627\u0644\u0633\u0643\u0646','\u0627\u0644\u0641\u0642\u0631']},
+            ha:{nav:['Taswirorin jigogi','Muhimman lambobi 2026','Teburin RGPH 2026','CEE 2026','Ma-anoni','Ma-ajiyar bayanai'],heading:'Alamomin kididdiga',search:'Nemo alama...',map:'Taswirar gudanarwa',regionSearch:'Yanki, gunduma, karamar hukuma...',display:'Nuni',numbers:'Lambobi',percent:'Kashi dari',export:'Fitar da zabin',national:'Duba kasa baki daya',regions:'Yankuna',departments:'Gundumomi',communes:'Kananan hukumomi',groups:['Kidayar jama\u2019a da gidaje','Yawan jama\u2019a','Lafiya','Ilimi da karatu','Harshen uwa','Ayyukan tattalin arziki','Yanayin gidaje','Talauci']}
+        };
+        function applyLanguage(code){var t=uiTranslations[code]||uiTranslations.fr;document.documentElement.lang=code;document.documentElement.dir=code==='ar'?'rtl':'ltr';document.querySelectorAll('.nav-tab').forEach(function(b,i){b.textContent=t.nav[i]||b.textContent;});document.querySelector('.sidebar .panel-heading').childNodes[0].textContent=t.heading+' ';document.getElementById('indicator-search').placeholder=t.search;document.querySelector('.map-toolbar>div>strong').textContent=t.map;document.getElementById('territory-search').placeholder=t.regionSearch;document.querySelector('.value-mode').childNodes[0].textContent=t.display+' ';document.querySelector('#value-mode option[value="value"]').textContent=t.numbers;document.querySelector('#value-mode option[value="percent"]').textContent=t.percent;document.getElementById('export-selection').textContent=t.export;document.getElementById('national-view').textContent=t.national;document.querySelectorAll('#indicator-catalog .theme>summary,#indicator-catalog .indicator-group>summary').forEach(function(el,i){if(t.groups[i])el.textContent=t.groups[i];});document.querySelectorAll('[data-map-mode]').forEach(function(b){b.textContent=b.dataset.mapMode==='bubbles'?(code==='en'?'Bubbles':code==='es'?'Burbujas':code==='ar'?'\u0641\u0642\u0627\u0639\u0627\u062a':code==='ha'?'Kumfa':'Bulles'):(code==='en'?'Map':code==='es'?'Mapa':code==='ar'?'\u062e\u0631\u064a\u0637\u0629':code==='ha'?'Taswira':'Carte');});try{localStorage.setItem('rgph-language',code);}catch(e){}}
+        var languageSelect=document.getElementById('language-select');try{languageSelect.value=localStorage.getItem('rgph-language')||'fr';}catch(e){}applyLanguage(languageSelect.value);languageSelect.addEventListener('change',function(){applyLanguage(this.value);});
+        document.getElementById('region-modal-close').addEventListener('click',function(){document.getElementById('region-data-modal').hidden=true;});document.getElementById('region-data-modal').addEventListener('click',function(e){if(e.target===this)this.hidden=true;});document.getElementById('region-modal-print').addEventListener('click',function(){document.body.classList.add('region-report-print');window.print();window.setTimeout(function(){document.body.classList.remove('region-report-print');},500);});document.addEventListener('keydown',function(e){if(e.key==='Escape')document.getElementById('region-data-modal').hidden=true;});
+        function showView(view) {
+            var panel=document.getElementById('view-panel'), mapNode=document.getElementById('map');
+            panel.replaceChildren(); panel.hidden=view==='thematic';
+            if(view==='thematic'){document.getElementById('view-status').textContent='Carte thématique — valeurs régionales';window.setTimeout(function(){map.invalidateSize();if(nigerLayer)map.fitBounds(nigerLayer.getBounds(),{padding:[30,30],maxZoom:7});},80);return;}
+            var titles={keys:'Chiffres clés 2026',tables:'Tableaux RGPH 2026',cee:'Cartographie des établissements économiques (CEE 2026)',concepts:'Concepts et définitions'};
+            var heading=document.createElement('h3'); heading.textContent=titles[view]||'Cartes thématiques'; panel.appendChild(heading);
+            var metrics=[['Population','population','millions'],['Ménages','households','millions'],['Accès aux soins (test)','healthRate','percent'],['Pauvreté (test)','povertyRate','percent'],['Activité économique (test)','economicRate','percent'],['Alphabétisation (test)','literacyRate','percent']];
+            if(view==='keys') {
+                var cards=document.createElement('div'); cards.className='metric-cards';
+                metrics.forEach(function(row){var card=document.createElement('div');card.className='metric-card';var value=document.createElement('strong');var total=row[1]==='population'?populationTotal():row[1]==='households'?householdsTotal():weightedRate(row[1]);value.textContent=row[2]==='millions'?(total/1000000).toLocaleString('fr-FR',{maximumFractionDigits:1})+' M':total.toLocaleString('fr-FR',{maximumFractionDigits:1})+' %';var label=document.createElement('span');label.textContent=row[0];card.append(value,label);cards.appendChild(card);});panel.appendChild(cards);
+                var note=document.createElement('p');note.className='sidebar-hint';note.textContent='Estimations de démonstration pour 2026 ; les indicateurs marqués « test » sont fictifs.';panel.appendChild(note);
+            } else if(view==='tables') {
+                renderTerritoryDataTable(panel,'regions');
+            } else if(view==='cee') {
+                var ceeTable=document.createElement('table'),ceeHead=ceeTable.createTHead().insertRow(),ceeBody=ceeTable.createTBody();['R\u00e9gion','\u00c9tablissements estim\u00e9s (test)','Activit\u00e9 \u00e9conomique (test)','Population'].forEach(function(label){var th=document.createElement('th');th.textContent=label;ceeHead.appendChild(th);});Object.keys(window.rgphStats).forEach(function(region){var stats=window.rgphStats[region],row=ceeBody.insertRow();[region,formatMetric('establishments',stats),formatMetric('economicRate',stats),formatMetric('population',stats)].forEach(function(value){row.insertCell().textContent=value;});});panel.appendChild(ceeTable);
+            } else if(view==='concepts') {
+                panel.classList.add('concepts-panel');
+                var definitions=[['Population totale','Nombre estim\u00e9 de personnes r\u00e9sidant habituellement dans le territoire s\u00e9lectionn\u00e9. La fiche pr\u00e9sente aussi les m\u00e9nages, c\u2019est-\u00e0-dire les personnes vivant dans un m\u00eame logement.'],['R\u00e9gion, d\u00e9partement et commune','Le Niger est pr\u00e9sent\u00e9 selon ses trois niveaux administratifs. Cliquez sur une r\u00e9gion pour ses d\u00e9partements, puis sur un d\u00e9partement pour ses communes.'],['Acc\u00e8s aux soins','Part estim\u00e9e de la population qui peut acc\u00e9der aux services de sant\u00e9. Le mode chiffres convertit le taux en effectif estim\u00e9.'],['Handicap','Part estim\u00e9e de la population vivant avec un handicap. Les r\u00e9sultats affich\u00e9s sont des valeurs de d\u00e9monstration.'],['Population sans-abri','Part estim\u00e9e de la population sans logement stable. Le chiffre correspondant est calcul\u00e9 \u00e0 partir de la population territoriale.'],['Alphab\u00e9tisation','Part des personnes pouvant lire et \u00e9crire. Les taux d\u2019analphab\u00e9tisme sont ventil\u00e9s par niveau scolaire : pr\u00e9scolaire, primaire, coll\u00e8ge, lyc\u00e9e et sup\u00e9rieur.'],['Ventilation par sexe','Pour chaque niveau scolaire, la fiche distingue l\u2019ensemble, les filles et les gar\u00e7ons. Les valeurs de d\u00e9monstration sont calcul\u00e9es s\u00e9par\u00e9ment pour chaque territoire.'],['Activit\u00e9 \u00e9conomique','Part estim\u00e9e des personnes en activit\u00e9. Le nombre d\u2019\u00e9tablissements \u00e9conomiques est \u00e9galement fourni \u00e0 titre de d\u00e9monstration.'],['Pauvret\u00e9 multidimensionnelle','Indice de d\u00e9monstration qui repr\u00e9sente les privations li\u00e9es aux conditions de vie. Il ne constitue pas une mesure officielle.'],['Logement \u00e9quip\u00e9','Part estim\u00e9e des m\u00e9nages disposant des \u00e9quipements retenus dans le jeu de d\u00e9monstration.'],['Langue dominante','Part estim\u00e9e associ\u00e9e \u00e0 la langue la plus repr\u00e9sent\u00e9e dans le territoire.'],['Lecture de la carte','La couleur repr\u00e9sente la valeur de l\u2019indicateur s\u00e9lectionn\u00e9. Choisissez chiffres pour un effectif estim\u00e9 ou pourcentages pour un taux. Le mode Bulles compare les territoires par la taille des cercles.'],['Donn\u00e9es et limites','Les populations et m\u00e9nages proviennent du jeu de d\u00e9monstration du portail. Les taux sanitaires, sociaux et scolaires sont fictifs et doivent \u00eatre remplac\u00e9s par les r\u00e9sultats officiels du RGPH.']];var list=document.createElement('dl');definitions.forEach(function(item){var term=document.createElement('dt');term.textContent=item[0];var desc=document.createElement('dd');desc.textContent=item[1];list.append(term,desc);});panel.appendChild(list);
+            }
+            document.getElementById('view-status').textContent=titles[view]||'Carte thématique';
+            mapNode.style.minHeight='300px'; window.setTimeout(function(){map.invalidateSize();},50);
+        }
+        document.querySelectorAll('.map-actions [data-action]').forEach(function(button){button.addEventListener('click',function(){var action=button.dataset.action;try{if(action==='zoom-in')map.zoomIn();else if(action==='zoom-out')map.zoomOut();else if(action==='search'){var input=document.getElementById('territory-search');input.focus();input.scrollIntoView({block:'nearest'});}else if(action==='print'){map.invalidateSize();window.print();}else if(action==='excel'||action==='word')downloadReport(action);else if(action==='fullscreen'){var section=document.querySelector('.map-section');if(!document.fullscreenElement&&section.requestFullscreen)section.requestFullscreen();else if(document.exitFullscreen)document.exitFullscreen();}else if(action==='labels'){document.querySelector('.map-section').classList.toggle('hide-department-labels');button.classList.toggle('active');showNotice(button.classList.contains('active')?'Libellés des départements masqués.':'Libellés des départements affichés.');}}catch(error){showNotice('Action indisponible dans ce navigateur.');}});});
+        var workspace=document.querySelector('.workspace');function setSidebarOpen(open){workspace.classList.toggle('sidebar-collapsed',!open);window.setTimeout(function(){map.invalidateSize();},280);}document.getElementById('sidebar-toggle').addEventListener('click',function(){setSidebarOpen(false);});document.getElementById('sidebar-reopen').addEventListener('click',function(){setSidebarOpen(true);});
+        document.querySelectorAll('.indicator-item').forEach(function(item) { item.addEventListener('click',function(){document.querySelectorAll('.indicator-item.selected').forEach(function(el){el.classList.remove('selected');});item.classList.add('selected');selectedMetric=item.dataset.metric||'population';selectedRegion=null;selectedDepartment=null;selectedCommune=null;document.getElementById('view-panel').hidden=true;document.getElementById('view-status').textContent='Valeur par r\u00e9gion - d\u00e9monstration';renderDetails('Vue nationale','Environ 32 millions d\u2019habitants','S\u00e9lectionnez une r\u00e9gion pour consulter ses indicateurs.',[],'');window.setTimeout(function(){map.invalidateSize();if(nigerLayer)map.fitBounds(nigerLayer.getBounds(),{padding:[30,30],maxZoom:7});updateMarkers();},80);});});
+        document.querySelectorAll('[data-map-mode]').forEach(function(button){button.addEventListener('click',function(){mapDisplayMode=button.dataset.mapMode;document.querySelectorAll('[data-map-mode]').forEach(function(other){other.classList.toggle('active',other===button);});updateMarkers();});});
+        document.getElementById('value-mode').addEventListener('change',function(){displayMode=this.value;updateMarkers();if(selectedRegion){renderDetails(selectedCommune?'Commune de '+selectedCommune:selectedDepartment?'Département de '+selectedDepartment:'Région de '+selectedRegion,selectedRegion,'Indicateurs estimés pour le territoire sélectionné.',[],'');}});
+        document.getElementById('export-selection').addEventListener('click',function(){downloadReport('excel');});
+        document.querySelectorAll('.nav-tab').forEach(function(tab){tab.addEventListener('click',function(){
+            document.querySelectorAll('.nav-tab').forEach(function(x){x.classList.remove('active');});
+            tab.classList.add('active'); showView(tab.dataset.view);
+        });});
+        fetch({{ path('api_rgph_indicators')|json_encode|raw }}).then(function(response){if(!response.ok)throw new Error('API unavailable');return response.json();}).then(function(payload){
+            if(payload.regions){window.rgphStats=payload.regions;updateMarkers();}
+        }).catch(function(){ /* les données de démonstration locales restent affichées */ });
+        fetch({{ path('api_rgph_territorial_indicators')|json_encode|raw }}).then(function(response){if(!response.ok)throw new Error('Territorial indicators unavailable');return response.json();}).then(function(payload){window.rgphAreaStats=payload.areas||[];}).catch(function(){window.rgphAreaStats=[];});
+        document.addEventListener('fullscreenchange',function(){window.setTimeout(function(){map.invalidateSize();},100);});
+        map.on('zoomend', function() {
+            updateMarkers();
+        });
+        renderRegionList();
+        updateMarkers();
+        window.setTimeout(function(){var splash=document.getElementById('rgph-splash');if(splash){splash.classList.add('is-leaving');window.setTimeout(function(){splash.remove();},500);}},5500);
+    </script>
 {% endblock %}
